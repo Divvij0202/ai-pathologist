@@ -94,6 +94,8 @@ def main():
             labels, info = reference_lesions(name, tuple(tp.shape), tile0, mpp0=slide.mpp)
             found = {l["id"] for l in r["lesions"] if l["found_at_look"]}
             for l in sorted(info, key=lambda l: -l["diameter_um"]):
+                if l.get("size_class") == "itc":
+                    continue
                 ys, xs = np.nonzero(labels == l["id"])
                 if len(ys) == 0:
                     continue

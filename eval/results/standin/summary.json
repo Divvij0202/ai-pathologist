@@ -1,0 +1,169 @@
+{
+ "summary": [
+  {
+   "mode": "sliding_window",
+   "budget": "all",
+   "slides": 40,
+   "slide_auc": 0.73125,
+   "tumour_slides_with_a_hit": "19/20",
+   "lesion_recall": 0.899,
+   "macro_recall": "21/21",
+   "micro_recall": "68/78",
+   "itc_recall": "90/162",
+   "mean_tissue_viewed": 1.0,
+   "fp_tiles_per_slide": 797.6
+  },
+  {
+   "mode": "best_first",
+   "budget": 10,
+   "slides": 40,
+   "slide_auc": 0.6975,
+   "tumour_slides_with_a_hit": "13/20",
+   "lesion_recall": 0.222,
+   "macro_recall": "13/21",
+   "micro_recall": "9/78",
+   "itc_recall": "18/162",
+   "mean_tissue_viewed": 0.072,
+   "fp_tiles_per_slide": 63.0
+  },
+  {
+   "mode": "best_first",
+   "budget": 20,
+   "slides": 40,
+   "slide_auc": 0.7325,
+   "tumour_slides_with_a_hit": "15/20",
+   "lesion_recall": 0.364,
+   "macro_recall": "18/21",
+   "micro_recall": "18/78",
+   "itc_recall": "32/162",
+   "mean_tissue_viewed": 0.143,
+   "fp_tiles_per_slide": 131.4
+  },
+  {
+   "mode": "best_first",
+   "budget": 40,
+   "slides": 40,
+   "slide_auc": 0.7025,
+   "tumour_slides_with_a_hit": "15/20",
+   "lesion_recall": 0.455,
+   "macro_recall": "20/21",
+   "micro_recall": "25/78",
+   "itc_recall": "45/162",
+   "mean_tissue_viewed": 0.287,
+   "fp_tiles_per_slide": 255.9
+  },
+  {
+   "mode": "best_first",
+   "budget": 80,
+   "slides": 40,
+   "slide_auc": 0.71375,
+   "tumour_slides_with_a_hit": "16/20",
+   "lesion_recall": 0.616,
+   "macro_recall": "21/21",
+   "micro_recall": "40/78",
+   "itc_recall": "56/162",
+   "mean_tissue_viewed": 0.541,
+   "fp_tiles_per_slide": 453.4
+  },
+  {
+   "mode": "best_first",
+   "budget": 160,
+   "slides": 40,
+   "slide_auc": 0.73125,
+   "tumour_slides_with_a_hit": "19/20",
+   "lesion_recall": 0.808,
+   "macro_recall": "21/21",
+   "micro_recall": "59/78",
+   "itc_recall": "78/162",
+   "mean_tissue_viewed": 0.821,
+   "fp_tiles_per_slide": 658.5
+  }
+ ],
+ "slides": [
+  "test_001",
+  "test_004",
+  "test_006",
+  "test_007",
+  "test_013",
+  "test_020",
+  "test_030",
+  "test_034",
+  "test_037",
+  "test_038",
+  "test_040",
+  "test_044",
+  "test_045",
+  "test_046",
+  "test_048",
+  "test_052",
+  "test_053",
+  "test_054",
+  "test_055",
+  "test_059",
+  "test_061",
+  "test_062",
+  "test_068",
+  "test_071",
+  "test_075",
+  "test_078",
+  "test_082",
+  "test_088",
+  "test_090",
+  "test_096",
+  "test_098",
+  "test_099",
+  "test_108",
+  "test_110",
+  "test_114",
+  "test_116",
+  "test_127",
+  "test_128",
+  "test_129",
+  "test_130"
+ ],
+ "model": {
+  "classifier": {
+   "input_size": 96,
+   "mean": [
+    0.485,
+    0.456,
+    0.406
+   ],
+   "std": [
+    0.229,
+    0.224,
+    0.225
+   ],
+   "temperature": 1.604601774155914,
+   "mpp": 0.972,
+   "arch": "small",
+   "pretrained": false,
+   "data": [
+    "c16_tiles.npz",
+    "c16_hardneg.npz"
+   ],
+   "metrics": {
+    "val_uncalibrated": {
+     "acc": 0.8630643967431533,
+     "auc": 0.885307901907357,
+     "ece": 0.06777336490343977,
+     "n": 1351
+    },
+    "val_calibrated": {
+     "acc": 0.8630643967431533,
+     "auc": 0.885307901907357,
+     "ece": 0.05583580892855682,
+     "n": 1351
+    },
+    "test_calibrated": {
+     "acc": 0.9126838235294118,
+     "auc": 0.943236276849642,
+     "ece": 0.07994240905185614,
+     "n": 1088
+    },
+    "temperature": 1.604601774155914
+   }
+  },
+  "survey": "opencv-features-fitted"
+ }
+}

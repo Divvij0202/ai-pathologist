@@ -142,6 +142,7 @@ def main():
             n_les = sum(r["reference_lesions"] for r in rs)
             mac = [tuple(map(int, r["macro_found"].split("/"))) for r in rs]
             mic = [tuple(map(int, r["micro_found"].split("/"))) for r in rs]
+            itc = [tuple(map(int, r["itc_found"].split("/"))) for r in rs]
             summary.append({
                 "mode": mode, "budget": "all" if b >= 100000 else b, "slides": len(rs),
                 "slide_auc": auc([r["slide_score"] for r in rs], [r["label"] in ("macro", "micro") for r in rs]),
@@ -149,11 +150,12 @@ def main():
                 "lesion_recall": round(sum(r["found"] for r in rs) / max(n_les, 1), 3),
                 "macro_recall": f"{sum(f for f, _ in mac)}/{sum(t for _, t in mac)}",
                 "micro_recall": f"{sum(f for f, _ in mic)}/{sum(t for _, t in mic)}",
+                "itc_recall": f"{sum(f for f, _ in itc)}/{sum(t for _, t in itc)}",
                 "mean_tissue_viewed": round(float(np.mean([r["fraction_tissue_viewed"] for r in rs])), 3),
                 "fp_tiles_per_slide": round(float(np.mean([r["false_positive_tiles"] for r in rs])), 1),
             })
     with open(out / "rows.csv", "w", newline="") as f:
-        keys = ["slide", "label", "mode", "budget", "reference_lesions", "found", "macro_found", "micro_found",
+        keys = ["slide", "label", "mode", "budget", "reference_lesions", "found", "macro_found", "micro_found", "itc_found",
                 "first_hit_look", "looks", "fraction_tissue_viewed", "false_positive_tiles", "slide_score", "slide_call"]
         w = csv.DictWriter(f, keys, extrasaction="ignore"); w.writeheader(); w.writerows(rows)
     (out / "runs.json").write_text(json.dumps([{k: r[k] for k in ("slide", "label", "mode", "budget", "lesions",

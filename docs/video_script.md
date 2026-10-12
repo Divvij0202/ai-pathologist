@@ -24,8 +24,8 @@ We built an agent that reads the slide the way a pathologist does, and shows its
 
 ## 2:30 to 3:30 · Does it work?
 **Screen:** `efficiency_curve.png`, then the summary table, then one gallery image.
-**Say:** "On 40 held-out test slides, the agent finds X percent of metastases while viewing Y percent of the tissue.
-Scanning everything finds Z percent but raises far more false alarms. Here's an honest failure: a 1.5 mm metastasis
+**Say:** "On 40 held-out test slides, the agent finds 58 percent of metastases while viewing 29 percent of the tissue (stand-in numbers; update with the final model).
+A raster scan has found 35 percent at that point but raises far more false alarms. Here's an honest failure: a 1.5 mm metastasis
 that the classifier would have caught, but the search never looked there."
 
 ## 3:30 to 4:15 · How it's built

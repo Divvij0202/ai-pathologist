@@ -1,0 +1,241 @@
+slide,label,mode,budget,reference_lesions,found,macro_found,micro_found,itc_found,first_hit_look,looks,fraction_tissue_viewed,false_positive_tiles,slide_score,slide_call
+test_001,macro,sliding_window,100000,4,4,1/1,3/3,2/2,8,173,1.0,319,0.997,likely metastasis
+test_004,micro,sliding_window,100000,1,1,0/0,1/1,1/1,190,213,1.0,926,0.973,likely metastasis
+test_006,negative,sliding_window,100000,0,0,0/0,0/0,0/0,,299,1.0,1207,0.938,likely metastasis
+test_007,negative,sliding_window,100000,0,0,0/0,0/0,0/0,,145,1.0,204,0.834,"suspicious, needs pathologist review"
+test_013,micro,sliding_window,100000,1,1,0/0,1/1,1/1,71,77,1.0,287,0.979,likely metastasis
+test_020,negative,sliding_window,100000,0,0,0/0,0/0,0/0,,49,1.0,177,0.928,likely metastasis
+test_030,macro,sliding_window,100000,6,6,1/1,5/5,8/18,9,133,1.0,797,0.994,likely metastasis
+test_034,negative,sliding_window,100000,0,0,0/0,0/0,0/0,,129,1.0,1106,0.991,likely metastasis
+test_037,negative,sliding_window,100000,0,0,0/0,0/0,0/0,,165,1.0,1070,0.996,likely metastasis
+test_038,micro,sliding_window,100000,4,4,0/0,4/4,0/0,131,171,1.0,761,0.958,likely metastasis
+test_040,macro,sliding_window,100000,8,8,4/4,4/4,1/1,4,123,1.0,208,1.0,likely metastasis
+test_044,negative,sliding_window,100000,0,0,0/0,0/0,0/0,,95,1.0,1289,0.99,likely metastasis
+test_045,negative,sliding_window,100000,0,0,0/0,0/0,0/0,,103,1.0,847,0.95,likely metastasis
+test_046,micro,sliding_window,100000,2,2,0/0,2/2,1/1,6,68,1.0,229,0.898,likely metastasis
+test_048,micro,sliding_window,100000,5,5,0/0,5/5,9/12,4,358,1.0,1117,0.991,likely metastasis
+test_052,micro,sliding_window,100000,1,1,0/0,1/1,0/0,136,162,1.0,507,0.997,likely metastasis
+test_053,negative,sliding_window,100000,0,0,0/0,0/0,0/0,,483,1.0,2416,0.992,likely metastasis
+test_054,negative,sliding_window,100000,0,0,0/0,0/0,0/0,,234,1.0,620,0.987,likely metastasis
+test_055,negative,sliding_window,100000,0,0,0/0,0/0,0/0,,95,1.0,1158,0.996,likely metastasis
+test_059,negative,sliding_window,100000,0,0,0/0,0/0,0/0,,221,1.0,703,0.991,likely metastasis
+test_061,macro,sliding_window,100000,5,5,2/2,3/3,6/7,133,273,1.0,1579,1.0,likely metastasis
+test_062,negative,sliding_window,100000,0,0,0/0,0/0,0/0,,78,1.0,270,0.946,likely metastasis
+test_068,macro,sliding_window,100000,3,2,1/1,1/2,4/5,196,287,1.0,1199,1.0,likely metastasis
+test_071,macro,sliding_window,100000,10,9,2/2,7/8,15/21,17,134,1.0,185,0.99,likely metastasis
+test_075,macro,sliding_window,100000,13,12,2/2,10/11,13/21,11,237,1.0,481,1.0,likely metastasis
+test_078,negative,sliding_window,100000,0,0,0/0,0/0,0/0,,164,1.0,704,0.97,likely metastasis
+test_082,macro,sliding_window,100000,20,13,2/2,11/18,13/41,16,298,1.0,544,1.0,likely metastasis
+test_088,negative,sliding_window,100000,0,0,0/0,0/0,0/0,,121,1.0,324,0.982,likely metastasis
+test_090,macro,sliding_window,100000,10,10,3/3,7/7,11/21,1,451,1.0,892,1.0,likely metastasis
+test_096,negative,sliding_window,100000,0,0,0/0,0/0,0/0,,59,1.0,80,0.765,"suspicious, needs pathologist review"
+test_098,negative,sliding_window,100000,0,0,0/0,0/0,0/0,,216,1.0,2550,0.991,likely metastasis
+test_099,micro,sliding_window,100000,1,1,0/0,1/1,1/1,182,193,1.0,1023,0.963,likely metastasis
+test_108,micro,sliding_window,100000,1,1,0/0,1/1,0/0,147,158,1.0,114,0.998,likely metastasis
+test_110,micro,sliding_window,100000,1,1,0/0,1/1,0/2,236,292,1.0,740,0.875,likely metastasis
+test_114,macro,sliding_window,100000,3,3,3/3,0/0,1/4,7,376,1.0,309,0.985,likely metastasis
+test_116,micro,sliding_window,100000,0,0,0/0,0/0,3/3,7,140,1.0,898,0.98,likely metastasis
+test_127,negative,sliding_window,100000,0,0,0/0,0/0,0/0,,459,1.0,2687,0.935,likely metastasis
+test_128,negative,sliding_window,100000,0,0,0/0,0/0,0/0,,81,1.0,497,0.976,likely metastasis
+test_129,negative,sliding_window,100000,0,0,0/0,0/0,0/0,,74,1.0,376,0.94,likely metastasis
+test_130,negative,sliding_window,100000,0,0,0/0,0/0,0/0,,166,1.0,505,0.958,likely metastasis
+test_001,macro,best_first,10,4,0,0/1,0/3,1/2,4,10,0.0578,42,0.883,likely metastasis
+test_004,micro,best_first,10,1,0,0/0,0/1,0/1,,10,0.0469,75,0.936,likely metastasis
+test_006,negative,best_first,10,0,0,0/0,0/0,0/0,,10,0.0334,74,0.857,likely metastasis
+test_007,negative,best_first,10,0,0,0/0,0/0,0/0,,10,0.069,26,0.829,"suspicious, needs pathologist review"
+test_013,micro,best_first,10,1,1,0/0,1/1,1/1,2,10,0.1299,97,0.979,likely metastasis
+test_020,negative,best_first,10,0,0,0/0,0/0,0/0,,10,0.2041,79,0.928,likely metastasis
+test_030,macro,best_first,10,6,3,1/1,2/5,4/18,6,10,0.0752,47,0.992,likely metastasis
+test_034,negative,best_first,10,0,0,0/0,0/0,0/0,,10,0.0775,97,0.913,likely metastasis
+test_037,negative,best_first,10,0,0,0/0,0/0,0/0,,10,0.0606,163,0.996,likely metastasis
+test_038,micro,best_first,10,4,0,0/0,0/4,0/0,,10,0.0585,104,0.82,"suspicious, needs pathologist review"
+test_040,macro,best_first,10,8,2,2/4,0/4,0/1,1,10,0.0813,0,0.999,likely metastasis
+test_044,negative,best_first,10,0,0,0/0,0/0,0/0,,10,0.1053,57,0.912,likely metastasis
+test_045,negative,best_first,10,0,0,0/0,0/0,0/0,,10,0.0971,96,0.935,likely metastasis
+test_046,micro,best_first,10,2,1,0/0,1/2,1/1,3,10,0.1471,34,0.775,"suspicious, needs pathologist review"
+test_048,micro,best_first,10,5,1,0/0,1/5,1/12,5,10,0.0279,38,0.976,likely metastasis
+test_052,micro,best_first,10,1,0,0/0,0/1,0/0,,10,0.0617,54,0.983,likely metastasis
+test_053,negative,best_first,10,0,0,0/0,0/0,0/0,,10,0.0207,180,0.991,likely metastasis
+test_054,negative,best_first,10,0,0,0/0,0/0,0/0,,10,0.0427,107,0.905,likely metastasis
+test_055,negative,best_first,10,0,0,0/0,0/0,0/0,,10,0.1053,138,0.959,likely metastasis
+test_059,negative,best_first,10,0,0,0/0,0/0,0/0,,10,0.0452,87,0.991,likely metastasis
+test_061,macro,best_first,10,5,3,2/2,1/3,2/7,1,10,0.0366,0,1.0,likely metastasis
+test_062,negative,best_first,10,0,0,0/0,0/0,0/0,,10,0.1282,29,0.712,"suspicious, needs pathologist review"
+test_068,macro,best_first,10,3,2,1/1,1/2,2/5,1,10,0.0348,3,1.0,likely metastasis
+test_071,macro,best_first,10,10,1,1/2,0/8,0/21,7,10,0.0746,4,0.979,likely metastasis
+test_075,macro,best_first,10,13,2,2/2,0/11,0/21,1,10,0.0422,6,1.0,likely metastasis
+test_078,negative,best_first,10,0,0,0/0,0/0,0/0,,10,0.061,49,0.842,"suspicious, needs pathologist review"
+test_082,macro,best_first,10,20,2,1/2,1/18,6/41,1,10,0.0336,48,1.0,likely metastasis
+test_088,negative,best_first,10,0,0,0/0,0/0,0/0,,10,0.0826,103,0.982,likely metastasis
+test_090,macro,best_first,10,10,2,2/3,0/7,0/21,1,10,0.0222,0,1.0,likely metastasis
+test_096,negative,best_first,10,0,0,0/0,0/0,0/0,,10,0.1695,29,0.707,"suspicious, needs pathologist review"
+test_098,negative,best_first,10,0,0,0/0,0/0,0/0,,10,0.0463,82,0.903,likely metastasis
+test_099,micro,best_first,10,1,0,0/0,0/1,0/1,,10,0.0518,67,0.897,likely metastasis
+test_108,micro,best_first,10,1,1,0/0,1/1,0/0,1,10,0.0633,9,0.998,likely metastasis
+test_110,micro,best_first,10,1,0,0/0,0/1,0/2,,10,0.0342,36,0.813,"suspicious, needs pathologist review"
+test_114,macro,best_first,10,3,1,1/3,0/0,0/4,10,10,0.0266,23,0.79,"suspicious, needs pathologist review"
+test_116,micro,best_first,10,0,0,0/0,0/0,0/3,,10,0.0714,117,0.96,likely metastasis
+test_127,negative,best_first,10,0,0,0/0,0/0,0/0,,10,0.0218,28,0.735,"suspicious, needs pathologist review"
+test_128,negative,best_first,10,0,0,0/0,0/0,0/0,,10,0.1235,52,0.886,likely metastasis
+test_129,negative,best_first,10,0,0,0/0,0/0,0/0,,10,0.1351,176,0.94,likely metastasis
+test_130,negative,best_first,10,0,0,0/0,0/0,0/0,,10,0.0602,63,0.905,likely metastasis
+test_001,macro,best_first,20,4,1,1/1,0/3,1/2,4,20,0.1156,49,0.993,likely metastasis
+test_004,micro,best_first,20,1,0,0/0,0/1,0/1,,20,0.0939,220,0.968,likely metastasis
+test_006,negative,best_first,20,0,0,0/0,0/0,0/0,,20,0.0669,212,0.91,likely metastasis
+test_007,negative,best_first,20,0,0,0/0,0/0,0/0,,20,0.1379,48,0.829,"suspicious, needs pathologist review"
+test_013,micro,best_first,20,1,1,0/0,1/1,1/1,2,20,0.2597,122,0.979,likely metastasis
+test_020,negative,best_first,20,0,0,0/0,0/0,0/0,,20,0.4082,93,0.928,likely metastasis
+test_030,macro,best_first,20,6,3,1/1,2/5,4/18,6,20,0.1504,140,0.994,likely metastasis
+test_034,negative,best_first,20,0,0,0/0,0/0,0/0,,20,0.155,241,0.957,likely metastasis
+test_037,negative,best_first,20,0,0,0/0,0/0,0/0,,20,0.1212,282,0.996,likely metastasis
+test_038,micro,best_first,20,4,1,0/0,1/4,0/0,17,20,0.117,154,0.863,likely metastasis
+test_040,macro,best_first,20,8,4,3/4,1/4,0/1,1,20,0.1626,0,0.999,likely metastasis
+test_044,negative,best_first,20,0,0,0/0,0/0,0/0,,20,0.2105,303,0.965,likely metastasis
+test_045,negative,best_first,20,0,0,0/0,0/0,0/0,,20,0.1942,221,0.95,likely metastasis
+test_046,micro,best_first,20,2,1,0/0,1/2,1/1,3,20,0.2941,63,0.775,"suspicious, needs pathologist review"
+test_048,micro,best_first,20,5,1,0/0,1/5,1/12,5,20,0.0559,82,0.976,likely metastasis
+test_052,micro,best_first,20,1,0,0/0,0/1,0/0,,20,0.1235,124,0.983,likely metastasis
+test_053,negative,best_first,20,0,0,0/0,0/0,0/0,,20,0.0414,287,0.992,likely metastasis
+test_054,negative,best_first,20,0,0,0/0,0/0,0/0,,20,0.0855,177,0.905,likely metastasis
+test_055,negative,best_first,20,0,0,0/0,0/0,0/0,,20,0.2105,324,0.984,likely metastasis
+test_059,negative,best_first,20,0,0,0/0,0/0,0/0,,20,0.0905,156,0.991,likely metastasis
+test_061,macro,best_first,20,5,5,2/2,3/3,5/7,1,20,0.0733,45,1.0,likely metastasis
+test_062,negative,best_first,20,0,0,0/0,0/0,0/0,,20,0.2564,71,0.833,"suspicious, needs pathologist review"
+test_068,macro,best_first,20,3,2,1/1,1/2,3/5,1,20,0.0697,49,1.0,likely metastasis
+test_071,macro,best_first,20,10,5,2/2,3/8,7/21,7,20,0.1493,24,0.988,likely metastasis
+test_075,macro,best_first,20,13,2,2/2,0/11,0/21,1,20,0.0844,37,1.0,likely metastasis
+test_078,negative,best_first,20,0,0,0/0,0/0,0/0,,20,0.122,78,0.874,likely metastasis
+test_082,macro,best_first,20,20,5,2/2,3/18,9/41,1,20,0.0671,48,1.0,likely metastasis
+test_088,negative,best_first,20,0,0,0/0,0/0,0/0,,20,0.1653,131,0.982,likely metastasis
+test_090,macro,best_first,20,10,2,2/3,0/7,0/21,1,20,0.0443,40,1.0,likely metastasis
+test_096,negative,best_first,20,0,0,0/0,0/0,0/0,,20,0.339,43,0.707,"suspicious, needs pathologist review"
+test_098,negative,best_first,20,0,0,0/0,0/0,0/0,,20,0.0926,228,0.972,likely metastasis
+test_099,micro,best_first,20,1,0,0/0,0/1,0/1,,20,0.1036,110,0.897,likely metastasis
+test_108,micro,best_first,20,1,1,0/0,1/1,0/0,1,20,0.1266,20,0.998,likely metastasis
+test_110,micro,best_first,20,1,0,0/0,0/1,0/2,,20,0.0685,55,0.828,"suspicious, needs pathologist review"
+test_114,macro,best_first,20,3,2,2/3,0/0,0/4,10,20,0.0532,40,0.962,likely metastasis
+test_116,micro,best_first,20,0,0,0/0,0/0,0/3,,20,0.1429,268,0.973,likely metastasis
+test_127,negative,best_first,20,0,0,0/0,0/0,0/0,,20,0.0436,96,0.754,"suspicious, needs pathologist review"
+test_128,negative,best_first,20,0,0,0/0,0/0,0/0,,20,0.2469,158,0.975,likely metastasis
+test_129,negative,best_first,20,0,0,0/0,0/0,0/0,,20,0.2703,257,0.94,likely metastasis
+test_130,negative,best_first,20,0,0,0/0,0/0,0/0,,20,0.1205,160,0.958,likely metastasis
+test_001,macro,best_first,40,4,3,1/1,2/3,2/2,4,40,0.2312,75,0.997,likely metastasis
+test_004,micro,best_first,40,1,0,0/0,0/1,0/1,,40,0.1878,360,0.973,likely metastasis
+test_006,negative,best_first,40,0,0,0/0,0/0,0/0,,40,0.1338,372,0.928,likely metastasis
+test_007,negative,best_first,40,0,0,0/0,0/0,0/0,,40,0.2759,55,0.829,"suspicious, needs pathologist review"
+test_013,micro,best_first,40,1,1,0/0,1/1,1/1,2,40,0.5195,210,0.979,likely metastasis
+test_020,negative,best_first,40,0,0,0/0,0/0,0/0,,40,0.8163,161,0.928,likely metastasis
+test_030,macro,best_first,40,6,4,1/1,3/5,5/18,6,40,0.3008,347,0.994,likely metastasis
+test_034,negative,best_first,40,0,0,0/0,0/0,0/0,,40,0.3101,350,0.957,likely metastasis
+test_037,negative,best_first,40,0,0,0/0,0/0,0/0,,40,0.2424,451,0.996,likely metastasis
+test_038,micro,best_first,40,4,2,0/0,2/4,0/0,17,40,0.2339,294,0.919,likely metastasis
+test_040,macro,best_first,40,8,4,3/4,1/4,0/1,1,40,0.3252,41,1.0,likely metastasis
+test_044,negative,best_first,40,0,0,0/0,0/0,0/0,,40,0.4211,649,0.985,likely metastasis
+test_045,negative,best_first,40,0,0,0/0,0/0,0/0,,40,0.3883,409,0.95,likely metastasis
+test_046,micro,best_first,40,2,2,0/0,2/2,1/1,3,40,0.5882,194,0.898,likely metastasis
+test_048,micro,best_first,40,5,1,0/0,1/5,1/12,5,40,0.1117,260,0.976,likely metastasis
+test_052,micro,best_first,40,1,0,0/0,0/1,0/0,,40,0.2469,224,0.983,likely metastasis
+test_053,negative,best_first,40,0,0,0/0,0/0,0/0,,40,0.0828,443,0.992,likely metastasis
+test_054,negative,best_first,40,0,0,0/0,0/0,0/0,,40,0.1709,244,0.987,likely metastasis
+test_055,negative,best_first,40,0,0,0/0,0/0,0/0,,40,0.4211,635,0.984,likely metastasis
+test_059,negative,best_first,40,0,0,0/0,0/0,0/0,,40,0.181,218,0.991,likely metastasis
+test_061,macro,best_first,40,5,5,2/2,3/3,6/7,1,40,0.1465,277,1.0,likely metastasis
+test_062,negative,best_first,40,0,0,0/0,0/0,0/0,,40,0.5128,159,0.905,likely metastasis
+test_068,macro,best_first,40,3,2,1/1,1/2,3/5,1,40,0.1394,226,1.0,likely metastasis
+test_071,macro,best_first,40,10,6,2/2,4/8,11/21,7,40,0.2985,35,0.989,likely metastasis
+test_075,macro,best_first,40,13,3,2/2,1/11,3/21,1,40,0.1688,117,1.0,likely metastasis
+test_078,negative,best_first,40,0,0,0/0,0/0,0/0,,40,0.2439,183,0.97,likely metastasis
+test_082,macro,best_first,40,20,5,2/2,3/18,11/41,1,40,0.1342,126,1.0,likely metastasis
+test_088,negative,best_first,40,0,0,0/0,0/0,0/0,,40,0.3306,216,0.982,likely metastasis
+test_090,macro,best_first,40,10,3,3/3,0/7,0/21,1,40,0.0887,61,1.0,likely metastasis
+test_096,negative,best_first,40,0,0,0/0,0/0,0/0,,40,0.678,60,0.707,"suspicious, needs pathologist review"
+test_098,negative,best_first,40,0,0,0/0,0/0,0/0,,40,0.1852,578,0.991,likely metastasis
+test_099,micro,best_first,40,1,0,0/0,0/1,0/1,,40,0.2073,350,0.963,likely metastasis
+test_108,micro,best_first,40,1,1,0/0,1/1,0/0,1,40,0.2532,29,0.998,likely metastasis
+test_110,micro,best_first,40,1,0,0/0,0/1,0/2,,40,0.137,117,0.828,"suspicious, needs pathologist review"
+test_114,macro,best_first,40,3,3,3/3,0/0,0/4,10,40,0.1064,92,0.962,likely metastasis
+test_116,micro,best_first,40,0,0,0/0,0/0,1/3,37,40,0.2857,495,0.98,likely metastasis
+test_127,negative,best_first,40,0,0,0/0,0/0,0/0,,40,0.0871,319,0.926,likely metastasis
+test_128,negative,best_first,40,0,0,0/0,0/0,0/0,,40,0.4938,258,0.975,likely metastasis
+test_129,negative,best_first,40,0,0,0/0,0/0,0/0,,40,0.5405,348,0.94,likely metastasis
+test_130,negative,best_first,40,0,0,0/0,0/0,0/0,,40,0.241,200,0.958,likely metastasis
+test_001,macro,best_first,80,4,4,1/1,3/3,2/2,4,80,0.4624,212,0.997,likely metastasis
+test_004,micro,best_first,80,1,0,0/0,0/1,0/1,,80,0.3756,519,0.973,likely metastasis
+test_006,negative,best_first,80,0,0,0/0,0/0,0/0,,80,0.2676,578,0.938,likely metastasis
+test_007,negative,best_first,80,0,0,0/0,0/0,0/0,,80,0.5517,124,0.834,"suspicious, needs pathologist review"
+test_013,micro,best_first,80,1,1,0/0,1/1,1/1,2,77,1.0,287,0.979,likely metastasis
+test_020,negative,best_first,80,0,0,0/0,0/0,0/0,,49,1.0,177,0.928,likely metastasis
+test_030,macro,best_first,80,6,4,1/1,3/5,6/18,6,80,0.6015,632,0.994,likely metastasis
+test_034,negative,best_first,80,0,0,0/0,0/0,0/0,,80,0.6202,811,0.991,likely metastasis
+test_037,negative,best_first,80,0,0,0/0,0/0,0/0,,80,0.4848,674,0.996,likely metastasis
+test_038,micro,best_first,80,4,3,0/0,3/4,0/0,17,80,0.4678,601,0.958,likely metastasis
+test_040,macro,best_first,80,8,7,4/4,3/4,1/1,1,80,0.6504,134,1.0,likely metastasis
+test_044,negative,best_first,80,0,0,0/0,0/0,0/0,,80,0.8421,1263,0.99,likely metastasis
+test_045,negative,best_first,80,0,0,0/0,0/0,0/0,,80,0.7767,768,0.95,likely metastasis
+test_046,micro,best_first,80,2,2,0/0,2/2,1/1,3,68,1.0,229,0.898,likely metastasis
+test_048,micro,best_first,80,5,2,0/0,2/5,2/12,5,80,0.2235,461,0.976,likely metastasis
+test_052,micro,best_first,80,1,1,0/0,1/1,0/0,58,80,0.4938,387,0.997,likely metastasis
+test_053,negative,best_first,80,0,0,0/0,0/0,0/0,,80,0.1656,796,0.992,likely metastasis
+test_054,negative,best_first,80,0,0,0/0,0/0,0/0,,80,0.3419,403,0.987,likely metastasis
+test_055,negative,best_first,80,0,0,0/0,0/0,0/0,,80,0.8421,1099,0.996,likely metastasis
+test_059,negative,best_first,80,0,0,0/0,0/0,0/0,,80,0.362,400,0.991,likely metastasis
+test_061,macro,best_first,80,5,5,2/2,3/3,6/7,1,80,0.293,776,1.0,likely metastasis
+test_062,negative,best_first,80,0,0,0/0,0/0,0/0,,78,1.0,270,0.946,likely metastasis
+test_068,macro,best_first,80,3,2,1/1,1/2,3/5,1,80,0.2787,552,1.0,likely metastasis
+test_071,macro,best_first,80,10,9,2/2,7/8,15/21,7,80,0.597,99,0.99,likely metastasis
+test_075,macro,best_first,80,13,8,2/2,6/11,6/21,1,80,0.3376,235,1.0,likely metastasis
+test_078,negative,best_first,80,0,0,0/0,0/0,0/0,,80,0.4878,372,0.97,likely metastasis
+test_082,macro,best_first,80,20,5,2/2,3/18,11/41,1,80,0.2685,203,1.0,likely metastasis
+test_088,negative,best_first,80,0,0,0/0,0/0,0/0,,80,0.6612,290,0.982,likely metastasis
+test_090,macro,best_first,80,10,4,3/3,1/7,0/21,1,80,0.1774,80,1.0,likely metastasis
+test_096,negative,best_first,80,0,0,0/0,0/0,0/0,,59,1.0,80,0.765,"suspicious, needs pathologist review"
+test_098,negative,best_first,80,0,0,0/0,0/0,0/0,,80,0.3704,1149,0.991,likely metastasis
+test_099,micro,best_first,80,1,0,0/0,0/1,1/1,50,80,0.4145,503,0.963,likely metastasis
+test_108,micro,best_first,80,1,1,0/0,1/1,0/0,1,80,0.5063,45,0.998,likely metastasis
+test_110,micro,best_first,80,1,0,0/0,0/1,0/2,,80,0.274,188,0.828,"suspicious, needs pathologist review"
+test_114,macro,best_first,80,3,3,3/3,0/0,0/4,10,80,0.2128,106,0.98,likely metastasis
+test_116,micro,best_first,80,0,0,0/0,0/0,1/3,37,80,0.5714,805,0.98,likely metastasis
+test_127,negative,best_first,80,0,0,0/0,0/0,0/0,,80,0.1743,563,0.935,likely metastasis
+test_128,negative,best_first,80,0,0,0/0,0/0,0/0,,80,0.9877,496,0.976,likely metastasis
+test_129,negative,best_first,80,0,0,0/0,0/0,0/0,,74,1.0,376,0.94,likely metastasis
+test_130,negative,best_first,80,0,0,0/0,0/0,0/0,,80,0.4819,391,0.958,likely metastasis
+test_001,macro,best_first,160,4,4,1/1,3/3,2/2,4,160,0.9249,311,0.997,likely metastasis
+test_004,micro,best_first,160,1,1,0/0,1/1,1/1,95,160,0.7512,811,0.973,likely metastasis
+test_006,negative,best_first,160,0,0,0/0,0/0,0/0,,160,0.5351,1000,0.938,likely metastasis
+test_007,negative,best_first,160,0,0,0/0,0/0,0/0,,145,1.0,204,0.834,"suspicious, needs pathologist review"
+test_013,micro,best_first,160,1,1,0/0,1/1,1/1,2,77,1.0,287,0.979,likely metastasis
+test_020,negative,best_first,160,0,0,0/0,0/0,0/0,,49,1.0,177,0.928,likely metastasis
+test_030,macro,best_first,160,6,6,1/1,5/5,8/18,6,133,1.0,797,0.994,likely metastasis
+test_034,negative,best_first,160,0,0,0/0,0/0,0/0,,129,1.0,1106,0.991,likely metastasis
+test_037,negative,best_first,160,0,0,0/0,0/0,0/0,,160,0.9697,1069,0.996,likely metastasis
+test_038,micro,best_first,160,4,4,0/0,4/4,0/0,17,160,0.9357,760,0.958,likely metastasis
+test_040,macro,best_first,160,8,8,4/4,4/4,1/1,1,123,1.0,208,1.0,likely metastasis
+test_044,negative,best_first,160,0,0,0/0,0/0,0/0,,95,1.0,1289,0.99,likely metastasis
+test_045,negative,best_first,160,0,0,0/0,0/0,0/0,,103,1.0,847,0.95,likely metastasis
+test_046,micro,best_first,160,2,2,0/0,2/2,1/1,3,68,1.0,229,0.898,likely metastasis
+test_048,micro,best_first,160,5,5,0/0,5/5,8/12,5,160,0.4469,743,0.991,likely metastasis
+test_052,micro,best_first,160,1,1,0/0,1/1,0/0,58,160,0.9877,502,0.997,likely metastasis
+test_053,negative,best_first,160,0,0,0/0,0/0,0/0,,160,0.3313,1367,0.992,likely metastasis
+test_054,negative,best_first,160,0,0,0/0,0/0,0/0,,160,0.6838,583,0.987,likely metastasis
+test_055,negative,best_first,160,0,0,0/0,0/0,0/0,,95,1.0,1158,0.996,likely metastasis
+test_059,negative,best_first,160,0,0,0/0,0/0,0/0,,160,0.724,624,0.991,likely metastasis
+test_061,macro,best_first,160,5,5,2/2,3/3,6/7,1,160,0.5861,1343,1.0,likely metastasis
+test_062,negative,best_first,160,0,0,0/0,0/0,0/0,,78,1.0,270,0.946,likely metastasis
+test_068,macro,best_first,160,3,2,1/1,1/2,4/5,1,160,0.5575,843,1.0,likely metastasis
+test_071,macro,best_first,160,10,9,2/2,7/8,15/21,7,134,1.0,185,0.99,likely metastasis
+test_075,macro,best_first,160,13,11,2/2,9/11,11/21,1,160,0.6751,424,1.0,likely metastasis
+test_078,negative,best_first,160,0,0,0/0,0/0,0/0,,160,0.9756,696,0.97,likely metastasis
+test_082,macro,best_first,160,20,8,2/2,6/18,11/41,1,160,0.5369,398,1.0,likely metastasis
+test_088,negative,best_first,160,0,0,0/0,0/0,0/0,,121,1.0,324,0.982,likely metastasis
+test_090,macro,best_first,160,10,7,3/3,4/7,4/21,1,160,0.3548,277,1.0,likely metastasis
+test_096,negative,best_first,160,0,0,0/0,0/0,0/0,,59,1.0,80,0.765,"suspicious, needs pathologist review"
+test_098,negative,best_first,160,0,0,0/0,0/0,0/0,,160,0.7407,2224,0.991,likely metastasis
+test_099,micro,best_first,160,1,1,0/0,1/1,1/1,50,160,0.829,891,0.963,likely metastasis
+test_108,micro,best_first,160,1,1,0/0,1/1,0/0,1,158,1.0,114,0.998,likely metastasis
+test_110,micro,best_first,160,1,1,0/0,1/1,0/2,140,160,0.5479,385,0.858,likely metastasis
+test_114,macro,best_first,160,3,3,3/3,0/0,1/4,10,160,0.4255,150,0.985,likely metastasis
+test_116,micro,best_first,160,0,0,0/0,0/0,3/3,37,140,1.0,898,0.98,likely metastasis
+test_127,negative,best_first,160,0,0,0/0,0/0,0/0,,160,0.3486,1394,0.935,likely metastasis
+test_128,negative,best_first,160,0,0,0/0,0/0,0/0,,81,1.0,497,0.976,likely metastasis
+test_129,negative,best_first,160,0,0,0/0,0/0,0/0,,74,1.0,376,0.94,likely metastasis
+test_130,negative,best_first,160,0,0,0/0,0/0,0/0,,160,0.9639,497,0.958,likely metastasis

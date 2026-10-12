@@ -71,26 +71,48 @@ against the official reference masks. Each slide is scanned exhaustively once an
 replays on identical classifier outputs.
 
 * **Efficiency curve:** reference lesions found vs share of tissue viewed at high zoom. **[TBD figure]**
-* **Slide level:** AUC tumour vs normal. **[TBD]**
+* **Slide level:** AUC tumour vs normal. **[TBD for PCam model; stand-in below]**
 * **Lesion level:** recall split into macro (> 2 mm) and micro (≤ 2 mm). **[TBD]**
 * **Agent ablation:** LLM agent vs fixed best-first vs sliding window at equal budgets. **[TBD]**
 * **Systems:** seconds and dollars per slide on Graviton (c7g) vs x86 (c7i). **[TBD]**
 
-Development result, stand-in classifier, tumor_026 (15 reference lesions):
+**Stand-in results** (CPU stand-in classifier, `eval/results/standin/`; replaced once the PCam model is trained).
+Lesion recall counts macro + micro metastases (99 lesions); isolated tumour cells (ITC, < 0.2 mm) are reported separately.
 
-| Strategy | Looks | Tissue viewed | Lesions found | False-positive tiles |
-|---|---|---|---|---|
-| Best-first | 20 | 4% | 4/15 | 0 |
-| Best-first | 40 | 8% | 7/15 | 3 |
-| Best-first | 80 | 16% | 10/15 | n/a |
-| Sliding window | 499 | 100% | 14/15 | 1868 |
+| Strategy | Looks | Tissue viewed | Slide AUC | Macro found | Micro found | ITC found | False-positive tiles / slide |
+|---|---|---|---|---|---|---|---|
+| Best-first | 10 | 7% | 0.70 | 13/21 | 9/78 | 18/162 | 63 |
+| Best-first | 20 | 14% | 0.73 | 18/21 | 18/78 | 32/162 | 131 |
+| Best-first | 40 | 29% | 0.70 | 20/21 | 25/78 | 45/162 | 256 |
+| Best-first | 80 | 54% | 0.71 | 21/21 | 40/78 | 56/162 | 453 |
+| Best-first | 160 | 82% | 0.73 | 21/21 | 59/78 | 78/162 | 659 |
+| Sliding window | all | 100% | 0.73 | 21/21 | 68/78 | 90/162 | 798 |
+
+![Efficiency curve](../eval/results/standin/efficiency_curve.png)
+
+Best-first finds about 58% of lesions after viewing 29% of the tissue, where a raster scan has found about 35%. It
+finds 20 of 21 macrometastases with 29% of the tissue and raises a third of the false-positive tiles. Slide AUC is
+low (0.70 to 0.73) for every strategy because the stand-in classifier fires on normal tissue on several slides (see
+section 5). That is a model limit, not a search limit, and is expected to improve with the PCam model.
+
+**A search fix found through the gallery.** On test_114 the survey scores saturated (99 of 417 tissue cells at 1.00),
+so ties were broken arbitrarily and best-first stayed in one corner, missing two 8 mm metastases at 40 looks. Breaking
+near-ties by distance from already-viewed tissue fixed it (3/3 at 40 looks) and raised macro recall at 40 looks from
+18/21 to 20/21; micro recall moved from 28/78 to 25/78, so overall lesion recall is unchanged (0.465 vs 0.455).
 
 ## 5. Failure cases
 
 `scripts/failure_gallery.py` renders the largest missed lesions and strongest false alarms with the reference outline.
 Each case is labelled a *search failure* (the classifier fires on it, but the search never looked there) or a *model
-failure* (the classifier does not fire, or fires on normal tissue). Seen so far: micrometastases the search ran out of
-budget before reaching; sinus histiocytes, pink paracortex and vessel walls mistaken for tumour by the stand-in.
+failure* (the classifier does not fire, or fires on normal tissue). Stand-in, best-first at 40 looks
+(`eval/results/standin/gallery/`):
+
+* Search failures: test_040 (2.1 mm, the one missed macrometastasis), test_075 (1.5 mm and 0.9 mm), test_001 (1.4 mm).
+  The search spent its budget elsewhere before reaching them.
+* Model failure, missed: test_082 (1.8 mm), which the classifier does not fire on even when viewed.
+* Model failure, false alarms on normal slides: test_044 (909 tiles), test_098 (426), test_055 (209), test_034 (208),
+  test_037 (133). Sinus histiocytes, pink paracortex and vessel walls are mistaken for tumour.
+
 **[TBD: gallery from the final model]**
 
 ## 6. Limits and responsible use

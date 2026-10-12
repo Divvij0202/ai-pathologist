@@ -34,9 +34,15 @@ def best_first(s: SearchSession, stop_early: bool = False, max_follow: int = 4, 
                 break
             hot = [l.cell for l in st.looks if l.n_tumour_tiles >= 2]
 
+            seen = np.array(sorted(st.visited)) if st.visited else None
+
             def rank(c):
                 near = suppress and any(abs(c[0] - h[0]) <= suppress and abs(c[1] - h[1]) <= suppress for h in hot)
-                return (not near, float(np.nan_to_num(st.survey[c], nan=-1)))
+                # survey scores saturate on some slides (many cells at 1.00); among
+                # near-equal scores prefer cells far from anything already viewed
+                sv = round(float(np.nan_to_num(st.survey[c], nan=-1)), 2)
+                far = 0.0 if seen is None else float(np.abs(seen - np.array(c)).max(1).min())
+                return (not near, sv, far)
             cell = max(cand, key=rank)
             follow = 0
             st.frontier = [c for c in st.frontier if c != cell]
