@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pathologist</title>
+<script src="/static/openseadragon/openseadragon.min.js"></script>
+<style>
+  :root {
+    --bg: #0f1115; --panel: #171a21; --line: #262b36; --text: #e6e8ee; --muted: #8a93a6;
+    --accent: #7aa2ff; --tumour: #ff5470; --ok: #4cc38a; --warn: #f5b74f;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text);
+    font: 14px/1.45 system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+  .app { display: grid; grid-template-columns: 360px 1fr; height: 100vh; }
+  aside { background: var(--panel); border-right: 1px solid var(--line); display: flex; flex-direction: column; min-height: 0; }
+  header { padding: 14px 16px; border-bottom: 1px solid var(--line); }
+  header h1 { font-size: 16px; margin: 0 0 2px; }
+  header p { margin: 0; color: var(--muted); font-size: 12px; }
+  .controls { padding: 12px 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; border-bottom: 1px solid var(--line); }
+  .controls label { font-size: 11px; color: var(--muted); display: block; margin-bottom: 3px; text-transform: uppercase; letter-spacing: .04em; }
+  select, input, button { width: 100%; background: var(--bg); color: var(--text); border: 1px solid var(--line);
+    border-radius: 6px; padding: 7px 9px; font: inherit; }
+  button { cursor: pointer; background: var(--accent); color: #0b1020; border: 0; font-weight: 600; }
+  button.ghost { background: transparent; color: var(--text); border: 1px solid var(--line); font-weight: 500; }
+  button:disabled { opacity: .5; cursor: default; }
+  .full { grid-column: 1 / -1; }
+  .scroll { overflow-y: auto; flex: 1; min-height: 0; }
+  section { padding: 12px 16px; border-bottom: 1px solid var(--line); }
+  section h2 { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 0 0 8px; }
+  .call { font-size: 15px; font-weight: 600; }
+  .call.pos { color: var(--tumour); } .call.rev { color: var(--warn); } .call.neg { color: var(--ok); }
+  .meter { height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; margin: 8px 0 4px; }
+  .meter > div { height: 100%; background: var(--accent); width: 0; transition: width .3s; }
+  .muted { color: var(--muted); font-size: 12px; }
+  .finding { padding: 8px; border: 1px solid var(--line); border-radius: 6px; margin-bottom: 6px; cursor: pointer; }
+  .finding:hover { border-color: var(--accent); }
+  .finding b { color: var(--tumour); }
+  .log-item { padding: 6px 0; border-bottom: 1px dashed var(--line); font-size: 12.5px; }
+  .log-item .who { color: var(--muted); font-size: 11px; }
+  .log-item.thought { color: #c9d4ff; }
+  .log-item.user { color: var(--warn); }
+  .log-item img { width: 64px; height: 64px; border-radius: 4px; margin-top: 4px; cursor: pointer; }
+  .chat { padding: 10px 16px; border-top: 1px solid var(--line); display: flex; gap: 6px; }
+  .chat input { flex: 1; } .chat button { width: auto; padding: 7px 14px; }
+  main { position: relative; min-width: 0; }
+  #osd { position: absolute; inset: 0; background: #fff; }
+  .layers { position: absolute; top: 10px; right: 10px; background: rgba(23,26,33,.92); border: 1px solid var(--line);
+    border-radius: 8px; padding: 8px 10px; z-index: 5; font-size: 12px; }
+  .layers label { display: flex; gap: 6px; align-items: center; margin: 3px 0; cursor: pointer; }
+  .layers input { width: auto; }
+  .disclaimer { position: absolute; bottom: 10px; left: 10px; z-index: 5; background: rgba(23,26,33,.9);
+    border: 1px solid var(--line); padding: 5px 9px; border-radius: 6px; font-size: 11.5px; color: var(--muted); }
+  .empty { position: absolute; inset: 0; display: grid; place-items: center; color: var(--muted); z-index: 2; pointer-events: none; }
+  svg.path text { font: 600 1px system-ui; }
+  @media (max-width: 800px) {
+    .app { grid-template-columns: 1fr; grid-template-rows: 55vh 1fr; }
+    main { order: -1; }
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <aside>
+    <header>
+      <h1>AI Pathologist</h1>
+      <p>Searches a lymph node slide for breast cancer metastases and shows its work.</p>
+    </header>
+    <div class="controls">
+      <div class="full"><label for="slide">Slide</label><select id="slide"></select></div>
+      <div><label for="mode">Search</label>
+        <select id="mode">
+          <option value="agent">LLM agent</option>
+          <option value="best_first">Fixed best-first</option>
+          <option value="sliding_window">Sliding window</option>
+        </select></div>
+      <div><label for="budget">Look budget</label><input id="budget" type="number" value="40" min="5" max="2000"></div>
+      <div><button id="start">Start search</button></div>
+      <div><button id="replay" class="ghost" disabled>Replay path</button></div>
+    </div>
+    <div class="scroll">
+      <section id="status-sec">
+        <h2>Status</h2>
+        <div id="call" class="call">No search yet</div>
+        <div class="meter"><div id="meter"></div></div>
+        <div id="status" class="muted">Pick a slide and start a search.</div>
+      </section>
+      <section><h2>Findings</h2><div id="findings" class="muted">None yet.</div></section>
+      <section><h2>Human review</h2><div id="review" class="muted">None yet.</div></section>
+      <section><h2>Decision log</h2><div id="log"></div></section>
+    </div>
+    <div class="chat">
+      <input id="chat" placeholder="e.g. check the lower left again" disabled>
+      <button id="send" disabled>Send</button>
+    </div>
+  </aside>
+  <main>
+    <div id="osd"></div>
+    <div class="empty" id="empty">Slide loads here</div>
+    <div class="layers">
+      <label><input type="checkbox" id="l-heat" checked> Tumour heatmap</label>
+      <label><input type="checkbox" id="l-survey"> Low-zoom survey</label>
+      <label><input type="checkbox" id="l-path" checked> Search path</label>
+    </div>
+    <div class="disclaimer">Research prototype and second reader only. A pathologist reviews every slide.</div>
+  </main>
+</div>
+<script>
+const $ = id => document.getElementById(id);
+let viewer = null, runId = null, run = null, W = 1, H = 1, heatItem = null, surveyItem = null;
+let svg = null, lastLooks = -1, poll = null, replayTimer = null, fitted = false;
+
+const osd = () => {
+  if (viewer) return viewer;
+  viewer = OpenSeadragon({ id: "osd", prefixUrl: "/static/openseadragon/images/",
+    showNavigator: true, navigatorPosition: "BOTTOM_RIGHT", maxZoomPixelRatio: 2, gestureSettingsMouse: { clickToZoom: false } });
+  return viewer;
+};
+
+async function api(path, opts) {
+  const r = await fetch(path, opts);
+  if (!r.ok) throw new Error((await r.text()) || r.statusText);
+  return r.json();
+}
+
+async function init() {
+  const { demo_slides } = await api("/slides");
+  $("slide").innerHTML = demo_slides.map(s => `<option>${s}</option>`).join("");
+  const h = await api("/health");
+  if (h.llm === "none") $("mode").value = "best_first";
+}
+
+function openSlide(name) {
+  const v = osd();
+  v.open(`/dz/${name}.dzi`);
+  $("empty").style.display = "none";
+  heatItem = surveyItem = null; svg = null; lastLooks = -1; fitted = false;
+}
+
+$("start").onclick = async () => {
+  clearInterval(poll); clearInterval(replayTimer);
+  const slide = $("slide").value;
+  openSlide(slide);
+  $("log").innerHTML = ""; $("findings").textContent = "None yet."; $("review").textContent = "None yet.";
+  $("call").textContent = "Searching…"; $("call").className = "call";
+  try {
+    const r = await api("/runs", { method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ slide, mode: $("mode").value, budget: +$("budget").value }) });
+    runId = r.run_id;
+    poll = setInterval(refresh, 1200);
+  } catch (e) { $("status").textContent = "Could not start: " + e.message; }
+};
+
+async function refresh() {
+  if (!runId) return;
+  try { run = await api(`/runs/${runId}`); } catch (e) { return; }
+  const g = run.geometry;
+  if (g) { W = g.width; H = g.height; }
+  $("meter").style.width = Math.min(100, 100 * run.looks_used / run.budget) + "%";
+  const cov = run.report ? ` · ${(100 * run.report.coverage.fraction_viewed).toFixed(1)}% of tissue viewed` : "";
+  $("status").textContent = `${run.status} · ${run.looks_used}/${run.budget} looks${cov}` + (run.error ? ` · ${run.error}` : "");
+  if (g && g.tissue_bbox && !fitted) {
+    fitted = true;
+    const b = g.tissue_bbox, pad = 0.05 * Math.max(b[2], b[3]);
+    osd().viewport.fitBounds(vpRect(b[0] - pad, b[1] - pad, b[2] + 2 * pad, b[3] + 2 * pad));
+  }
+  if (g && run.looks.length !== lastLooks) {
+    lastLooks = run.looks.length;
+    drawPath(run.looks.length);
+    updateHeat();
+  }
+  renderLog();
+  if (run.report) renderReport(run.report);
+  const busy = run.status === "running" || run.status === "queued";
+  $("chat").disabled = $("send").disabled = busy || !run.report;
+  $("replay").disabled = !run.looks.length || busy;
+  if (!busy && run.report) { clearInterval(poll); poll = null; }
+}
+
+function vpRect(x, y, w, h) { return new OpenSeadragon.Rect(x / W, y / W, w / W, h / W); }
+
+function updateHeat() {
+  const v = osd(), g = run.geometry, width = g.cols * g.cell0 / W;
+  const add = (layer, prev, show, opacity, cb) => {
+    if (prev) v.world.removeItem(prev);
+    if (!show) return cb(null);
+    v.addTiledImage({ tileSource: { type: "image", url: `/runs/${runId}/heat.png?layer=${layer}&t=${Date.now()}` },
+      x: 0, y: 0, width, opacity, success: e => cb(e.item) });
+  };
+  add("tumour", heatItem, $("l-heat").checked, 0.75, it => heatItem = it);
+  add("survey", surveyItem, $("l-survey").checked, 0.55, it => surveyItem = it);
+}
+$("l-heat").onchange = $("l-survey").onchange = () => run && run.geometry && updateHeat();
+$("l-path").onchange = () => { if (svg) svg.style.display = $("l-path").checked ? "" : "none"; };
+
+function drawPath(n) {
+  const v = osd();
+  if (!svg) {
+    svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("class", "path");
+    svg.setAttribute("preserveAspectRatio", "none");
+    v.addOverlay({ element: svg, location: vpRect(0, 0, W, H) });
+  }
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  const looks = run.looks.slice(0, n);
+  let pts = looks.map(l => `${l.x + l.size / 2},${l.y + l.size / 2}`).join(" ");
+  let out = `<polyline points="${pts}" fill="none" stroke="#3fb6ff" stroke-width="1.5" vector-effect="non-scaling-stroke" stroke-opacity=".85"/>`;
+  for (const l of looks) {
+    const col = l.tumour_tiles ? "#ff5470" : "#1f2a44";
+    out += `<rect x="${l.x}" y="${l.y}" width="${l.size}" height="${l.size}" fill="none" stroke="${col}" stroke-width="2" vector-effect="non-scaling-stroke"/>`;
+    out += `<text x="${l.x + l.size * 0.06}" y="${l.y + l.size * 0.3}" font-size="${l.size * 0.28}" fill="${col}" font-weight="700">${l.n}</text>`;
+  }
+  svg.innerHTML = out;
+  svg.style.display = $("l-path").checked ? "" : "none";
+}
+
+$("replay").onclick = () => {
+  clearInterval(replayTimer);
+  let i = 0;
+  replayTimer = setInterval(() => { drawPath(++i); if (i >= run.looks.length) clearInterval(replayTimer); }, 250);
+};
+
+function renderReport(r) {
+  const c = $("call");
+  c.textContent = r.slide_call.charAt(0).toUpperCase() + r.slide_call.slice(1);
+  c.className = "call " + (r.slide_call.startsWith("likely") ? "pos" : r.slide_call.startsWith("susp") ? "rev" : "neg");
+  $("findings").innerHTML = r.findings.length ? r.findings.map((f, i) =>
+    `<div class="finding" data-i="${i}"><b>Lesion ${f.lesion_id}</b> · ${f.size_class}<br>
+     <span class="muted">~${Math.round(f.largest_diameter_um)} µm · p=${f.top3_mean.toFixed(2)} · regions ${f.regions.join(", ")}</span></div>`).join("")
+    : `<span class="muted">No suspicious lesions found.</span>`;
+  document.querySelectorAll(".finding").forEach(el => el.onclick = () => {
+    const b = r.findings[+el.dataset.i].bbox_level0, pad = b[2] * 0.4;
+    osd().viewport.fitBounds(vpRect(b[0] - pad, b[1] - pad, b[2] + 2 * pad, b[3] + 2 * pad));
+  });
+  $("review").innerHTML = r.human_review.length ? r.human_review.slice(0, 12).map(f =>
+    `<div class="log-item"><b>${f.target}</b>: ${f.reason} <span class="who">(${f.by})</span></div>`).join("")
+    : `<span class="muted">Nothing flagged.</span>`;
+}
+
+function renderLog() {
+  const items = [];
+  const looksByN = Object.fromEntries(run.looks.map(l => [l.n, l]));
+  let lookN = 0;
+  for (const e of run.log) {
+    if (e.tool === "zoom_region" || e.tool === "refine_region") {
+      const n = (e.result.looks || []).map(l => l.n);
+      const thumbs = n.map(k => looksByN[k]).filter(l => l && l.tumour_tiles)
+        .map(l => `<img src="/runs/${runId}/snapshots/${l.snapshot}" title="look ${l.n}" data-n="${l.n}">`).join("");
+      const hits = (e.result.looks || []).filter(l => l.n_tumour_tiles).length;
+      items.push(`<div class="log-item"><span class="who">${e.actor} · ${e.tool.replace("_", " ")} · region ${e.args.region_id ?? "near " + (e.args.near_xy || [])}</span><br>
+        ${e.reason || ""}${n.length ? ` <span class="muted">(looks ${n.join(", ")}${hits ? `, tumour in ${hits}` : ""})</span>` : ""}<br>${thumbs}</div>`);
+    } else if (e.tool !== "write_report" || e.result.error) {
+      items.push(`<div class="log-item"><span class="who">${e.actor} · ${e.tool.replace("_", " ")}</span><br>${e.reason || ""}
+        ${e.result.error ? `<br><span style="color:var(--warn)">${e.result.error}</span>` : ""}</div>`);
+    }
+  }
+  for (const t of run.thoughts) items.push(`<div class="log-item ${t.kind === "user" ? "user" : "thought"}">${t.kind === "user" ? "Pathologist: " : ""}${t.text || t.message}</div>`);
+  $("log").innerHTML = items.slice(-80).join("");
+  $("log").querySelectorAll("img").forEach(img => img.onclick = () => {
+    const l = looksByN[+img.dataset.n]; osd().viewport.fitBounds(vpRect(l.x, l.y, l.size, l.size));
+  });
+}
+
+async function sendChat() {
+  const text = $("chat").value.trim();
+  if (!text || !runId) return;
+  $("chat").value = "";
+  try {
+    await api(`/runs/${runId}/chat`, { method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text }) });
+    clearInterval(poll); poll = setInterval(refresh, 1200);
+  } catch (e) { $("status").textContent = "Chat failed: " + e.message; }
+}
+$("send").onclick = sendChat;
+$("chat").onkeydown = e => { if (e.key === "Enter") sendChat(); };
+init();
+</script>
+</body>
+</html>

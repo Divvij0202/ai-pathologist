@@ -117,11 +117,16 @@ class SlideState:
     looks: list[Look] = field(default_factory=list)
     frontier: list[tuple[int, int]] = field(default_factory=list)
     survey_seconds: float = 0.0
+    cache: np.ndarray | None = None
 
 
 class VisionService:
     def __init__(self, classifier: TileClassifier | None, scorer: SurveyScorer, config: VisionConfig | None = None,
-                 out_dir: str | Path = "runs"):
+                 out_dir: str | Path = "runs", cache_dir: str | Path | None = None):
+        """cache_dir: folder of <slide>.npz files from scripts/build_cache.py holding every
+        cell's tile probabilities. Looks then read the cache instead of S3, so search
+        strategies can be compared quickly and on identical classifier outputs."""
+        self.cache_dir = Path(cache_dir) if cache_dir else None
         self.clf = classifier
         self.scorer = scorer
         self.cfg = config or VisionConfig()
@@ -154,13 +159,17 @@ class VisionService:
         cell_tissue = cv2.resize(pad.astype(np.float32) / 255, (cols, rows), interpolation=cv2.INTER_AREA)
         tissue_cells = cell_tissue >= cfg.cell_tissue_min
 
-        survey = self._survey_scores(slide, tissue_cells, cell0)
+        cache = None
+        if self.cache_dir and (self.cache_dir / f"{Path(slide_path).stem}.npz").exists():
+            cache = np.load(self.cache_dir / f"{Path(slide_path).stem}.npz")
+        survey = cache["survey"] if cache is not None else self._survey_scores(slide, tissue_cells, cell0)
         regions, cell_region = self._make_regions(survey, tissue_cells, rows, cols, cell0, slide)
 
         T = cfg.cell_tiles
         st = SlideState(slide_path, slide, run_dir, thumb, tl, mask, rows, cols, cell0, cell_tissue, survey,
                         regions, cell_region, np.full((rows * T, cols * T), np.nan, np.float32))
         st.survey_seconds = time.time() - t0
+        st.cache = cache["tile_prob"] if cache is not None else None
         self.states[session] = st
         cv2.imwrite(str(run_dir / "survey.jpg"), self.render_overlay(session, show_survey=True))
 
@@ -299,7 +308,41 @@ class VisionService:
             raise RuntimeError("No tile classifier loaded (models/tile_classifier.onnx)")
         t0 = time.time()
         st, cfg = self.states[session], self.cfg
-        img = self._read_cell(st, cell)
+        T = cfg.cell_tiles
+        r, c = cell
+        if st.cache is not None and not refine:
+            img = None
+            grid = st.cache[r * T:(r + 1) * T, c * T:(c + 1) * T].copy()
+            probs = grid[np.isfinite(grid)]
+        else:
+            img = self._read_cell(st, cell)
+            img, grid, probs = self.classify_cell(img, refine)
+        st.tile_prob[r * T : (r + 1) * T, c * T : (c + 1) * T] = grid
+        st.visited.add(cell)
+
+        pos = np.nan_to_num(grid, nan=0) >= cfg.positive_prob
+        if pos.sum() >= 2:  # tumour reaching a cell edge: queue the neighbour across that edge
+            for dr, dc, edge in ((-1, 0, pos[0].sum() >= 2), (1, 0, pos[-1].sum() >= 2),
+                                 (0, -1, pos[:, 0].sum() >= 2), (0, 1, pos[:, -1].sum() >= 2)):
+                nb = (r + dr, c + dc)
+                if edge and nb in st.cell_region and nb not in st.visited and nb not in st.frontier:
+                    st.frontier.append(nb)
+
+        n = len(st.looks) + 1
+        snap = st.run_dir / "snapshots" / f"look_{n:03d}_r{r}_c{c}.jpg"
+        if img is not None:
+            cv2.imwrite(str(snap), self._snapshot(img, grid))
+        top = np.sort(probs)[::-1][:3] if len(probs) else np.zeros(1)
+        lk = Look(n, cell, st.cell_region.get(cell, 0), float(probs.max()) if len(probs) else 0.0,
+                  float(top.mean()), int(pos.sum()), len(probs), blur_score(img) if img is not None else 999.0,
+                  refine, str(snap) if img is not None else "", time.time() - t0)
+        st.looks.append(lk)
+        return lk
+
+    def classify_cell(self, img: np.ndarray, refine: bool = False):
+        """Stain handling, tissue filter and tile classification for one cell image.
+        Returns (image actually classified, T x T probability grid with nan for glass, probs)."""
+        cfg = self.cfg
         T, P = cfg.cell_tiles, cfg.tile_px
         mode = "macenko" if refine else cfg.stain_normalize
         if mode == "macenko":
@@ -319,27 +362,7 @@ class VisionService:
         grid = np.full((T, T), np.nan, np.float32)
         for (i, j), p in zip(idx, probs):
             grid[i, j] = p
-        r, c = cell
-        st.tile_prob[r * T : (r + 1) * T, c * T : (c + 1) * T] = grid
-        st.visited.add(cell)
-
-        pos = np.nan_to_num(grid, nan=0) >= cfg.positive_prob
-        if pos.sum() >= 2:  # tumour reaching a cell edge: queue the neighbour across that edge
-            for dr, dc, edge in ((-1, 0, pos[0].sum() >= 2), (1, 0, pos[-1].sum() >= 2),
-                                 (0, -1, pos[:, 0].sum() >= 2), (0, 1, pos[:, -1].sum() >= 2)):
-                nb = (r + dr, c + dc)
-                if edge and nb in st.cell_region and nb not in st.visited and nb not in st.frontier:
-                    st.frontier.append(nb)
-
-        n = len(st.looks) + 1
-        snap = st.run_dir / "snapshots" / f"look_{n:03d}_r{r}_c{c}.jpg"
-        cv2.imwrite(str(snap), self._snapshot(img, grid))
-        top = np.sort(probs)[::-1][:3] if len(probs) else np.zeros(1)
-        lk = Look(n, cell, st.cell_region.get(cell, 0), float(probs.max()) if len(probs) else 0.0,
-                  float(top.mean()), int(pos.sum()), len(tiles), blur_score(img), refine, str(snap),
-                  time.time() - t0)
-        st.looks.append(lk)
-        return lk
+        return img, grid, np.asarray(probs, np.float32)
 
     def _read_cell(self, st: SlideState, cell) -> np.ndarray:
         cfg, slide = self.cfg, st.slide

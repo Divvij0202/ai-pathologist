@@ -8,6 +8,8 @@ reference lesions found vs fraction of tissue cells viewed.
 """
 from __future__ import annotations
 
+from functools import lru_cache
+
 import cv2
 import numpy as np
 
@@ -15,6 +17,7 @@ from .slide import Mask, camelyon_url
 from .vision import VisionService
 
 
+@lru_cache(maxsize=64)
 def reference_lesions(name: str, tile_grid_shape, tile0: float, min_diam_um: float = 0.0, mpp0: float = 0.243):
     """Rasterise the reference tumour mask onto the tile grid. Returns (labels, info)."""
     mask = Mask(camelyon_url(name, "masks"))
@@ -54,7 +57,7 @@ def evaluate(vision: VisionService, session: str, threshold: float = 0.5) -> dic
         labels, info = np.zeros(st.tile_prob.shape, np.int32), []
     else:
         try:
-            labels, info = reference_lesions(name, st.tile_prob.shape, tile0, mpp0=st.slide.mpp)
+            labels, info = reference_lesions(name, tuple(st.tile_prob.shape), tile0, mpp0=st.slide.mpp)
         except Exception as e:  # test slides that are negative have no mask
             labels, info = np.zeros(st.tile_prob.shape, np.int32), []
             out["mask_note"] = f"no reference mask ({type(e).__name__}); treated as negative"
@@ -88,6 +91,6 @@ def evaluate(vision: VisionService, session: str, threshold: float = 0.5) -> dic
         "false_positive_tiles": fp_tiles,
         "slide_score": round(vision.slide_score(session), 3),
         "efficiency_curve": curve,
-        "lesions": [{**l, "found_at_look": found_at.get(l["id"])} for l in sorted(info, key=lambda l: -l["diameter_um"])][:20],
+        "lesions": [{**l, "found_at_look": found_at.get(l["id"])} for l in sorted(info, key=lambda l: -l["diameter_um"])],
     })
     return out

@@ -7,3 +7,4 @@ data/
 models/*.pt
 .venv/
 models/*_features.npz
+eval/cache/
