@@ -53,8 +53,26 @@ EMAIL=you@example.com LIMIT=50 ./deploy/budget_alarm.sh
 REPO_URL=https://github.com/<you>/ai-pathologist.git ./deploy/launch_graviton.sh
 ```
 
-## Still to build (plan days Oct 17 to 21)
+## Built since (Oct 12, evening)
 
-- Run the 40-slide evaluation and the agent vs best-first vs sliding-window comparison.
-- Web viewer (OpenSeadragon) with heatmap, animated search path, findings and chat.
-- Graviton vs x86 benchmark (`python -m scripts.benchmark`).
+- Web viewer at `/` of the API: deep zoom slide, tumour and survey heatmaps, numbered search path with replay,
+  findings you can click to fly to, decision log with snapshots, and pathologist chat (rule-based when no LLM).
+  Try it: `PATHAGENT_LLM=none uvicorn service.app:app --port 8000` then open http://localhost:8000.
+  Screenshot: `docs/viewer.png`.
+- Tile cache + evaluation suite: `scripts/build_cache.py` scans each slide once; `scripts/eval_suite.py` replays
+  every strategy and budget on the cache and writes tables and the efficiency curve to `eval/results/<tag>/`.
+- Failure gallery: `scripts/failure_gallery.py`.
+- Drafts: `docs/technical_report.md`, `docs/video_script.md`.
+
+When your PCam model arrives, the whole evaluation reruns with:
+
+```bash
+python -m scripts.build_cache --slides $(cat eval/test_subset.txt) --cache eval/cache/resnet18
+python -m scripts.eval_suite --cache eval/cache/resnet18 --tag resnet18 --modes sliding_window best_first agent
+python -m scripts.failure_gallery --tag resnet18 --cache eval/cache/resnet18
+```
+
+## Still to build
+
+- Graviton vs x86 benchmark numbers (needs your AWS account: `python -m scripts.benchmark` on each).
+- Final numbers in the report once the PCam model and the agent runs exist.
