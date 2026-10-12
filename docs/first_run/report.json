@@ -1,0 +1,217 @@
+{
+ "slide": "tumor_026.tif",
+ "slide_call": "likely metastasis",
+ "slide_score": 1.0,
+ "review_regions": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  10,
+  11,
+  13,
+  15,
+  19,
+  20,
+  21
+ ],
+ "findings": [
+  {
+   "n_tiles": 692,
+   "max_prob": 1.0,
+   "top3_mean": 1.0,
+   "largest_diameter_um": 3977.0,
+   "area_mm2": 6.025,
+   "size_class": "macrometastasis (>2 mm)",
+   "center_xy": [
+    0.2559,
+    0.7045
+   ],
+   "center_level0": [
+    24891,
+    155457
+   ],
+   "bbox_level0": [
+    19960,
+    147398,
+    9980,
+    16505
+   ],
+   "regions": [
+    1,
+    5,
+    13,
+    19,
+    21
+   ],
+   "touches_unviewed_tissue": true,
+   "lesion_id": 1
+  },
+  {
+   "n_tiles": 575,
+   "max_prob": 1.0,
+   "top3_mean": 1.0,
+   "largest_diameter_um": 2776.0,
+   "area_mm2": 5.007,
+   "size_class": "macrometastasis (>2 mm)",
+   "center_xy": [
+    0.2244,
+    0.5425
+   ],
+   "center_level0": [
+    21831,
+    119713
+   ],
+   "bbox_level0": [
+    16121,
+    114387,
+    11515,
+    10747
+   ],
+   "regions": [
+    2,
+    10,
+    15,
+    20
+   ],
+   "touches_unviewed_tissue": true,
+   "lesion_id": 2
+  },
+  {
+   "n_tiles": 356,
+   "max_prob": 1.0,
+   "top3_mean": 1.0,
+   "largest_diameter_um": 2738.0,
+   "area_mm2": 3.1,
+   "size_class": "macrometastasis (>2 mm)",
+   "center_xy": [
+    0.6644,
+    0.4355
+   ],
+   "center_level0": [
+    64631,
+    96106
+   ],
+   "bbox_level0": [
+    60264,
+    91740,
+    10363,
+    9596
+   ],
+   "regions": [
+    3,
+    11
+   ],
+   "touches_unviewed_tissue": true,
+   "lesion_id": 3
+  },
+  {
+   "n_tiles": 21,
+   "max_prob": 1.0,
+   "top3_mean": 1.0,
+   "largest_diameter_um": 537.0,
+   "area_mm2": 0.183,
+   "size_class": "micrometastasis (0.2-2 mm)",
+   "center_xy": [
+    0.9268,
+    0.6034
+   ],
+   "center_level0": [
+    90157,
+    133148
+   ],
+   "bbox_level0": [
+    89053,
+    132044,
+    2303,
+    2303
+   ],
+   "regions": [
+    4
+   ],
+   "touches_unviewed_tissue": true,
+   "lesion_id": 4
+  },
+  {
+   "n_tiles": 1,
+   "max_prob": 0.82,
+   "top3_mean": 0.82,
+   "largest_diameter_um": 70.0,
+   "area_mm2": 0.009,
+   "size_class": "isolated tumour cells (<0.2 mm)",
+   "center_xy": [
+    0.254,
+    0.7486
+   ],
+   "center_level0": [
+    24710,
+    165200
+   ],
+   "bbox_level0": [
+    24566,
+    165056,
+    383,
+    383
+   ],
+   "regions": [
+    21
+   ],
+   "touches_unviewed_tissue": true,
+   "lesion_id": 5
+  }
+ ],
+ "coverage": {
+  "cells_viewed": 40,
+  "tissue_cells": 499,
+  "fraction_viewed": 0.0802
+ },
+ "looks_used": 40,
+ "budget": 40,
+ "human_review": [
+  {
+   "target": "lesion 1",
+   "reason": "lesion runs into tissue that was not viewed; size may be underestimated",
+   "by": "rule"
+  },
+  {
+   "target": "lesion 2",
+   "reason": "lesion runs into tissue that was not viewed; size may be underestimated",
+   "by": "rule"
+  },
+  {
+   "target": "lesion 3",
+   "reason": "lesion runs into tissue that was not viewed; size may be underestimated",
+   "by": "rule"
+  },
+  {
+   "target": "lesion 4",
+   "reason": "lesion runs into tissue that was not viewed; size may be underestimated",
+   "by": "rule"
+  },
+  {
+   "target": "lesion 5",
+   "reason": "lesion runs into tissue that was not viewed; size may be underestimated",
+   "by": "rule"
+  },
+  {
+   "target": "lesion 6",
+   "reason": "lesion runs into tissue that was not viewed; size may be underestimated",
+   "by": "rule"
+  },
+  {
+   "target": "lesion 7",
+   "reason": "lesion runs into tissue that was not viewed; size may be underestimated",
+   "by": "rule"
+  },
+  {
+   "target": "lesion 10",
+   "reason": "lesion runs into tissue that was not viewed; size may be underestimated",
+   "by": "rule"
+  }
+ ],
+ "agent_summary": "Fixed best-first search (no LLM).",
+ "overlay_image": "/home/claude/runs3/tumor_026_best_first_40/overlay.jpg",
+ "seconds": 36.5,
+ "disclaimer": "Research prototype, second reader only. A pathologist must review every slide."
+}

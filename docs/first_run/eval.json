@@ -1,0 +1,277 @@
+{
+ "slide": "tumor_026",
+ "reference_lesions": 15,
+ "found": 4,
+ "macro_found": "4/4",
+ "micro_found": "0/11",
+ "first_hit_look": 1,
+ "looks": 40,
+ "fraction_tissue_viewed": 0.0802,
+ "false_positive_tiles": 3,
+ "slide_score": 1.0,
+ "efficiency_curve": [
+  [
+   0.002,
+   0.0667
+  ],
+  [
+   0.004,
+   0.0667
+  ],
+  [
+   0.006,
+   0.0667
+  ],
+  [
+   0.008,
+   0.0667
+  ],
+  [
+   0.01,
+   0.0667
+  ],
+  [
+   0.012,
+   0.1333
+  ],
+  [
+   0.014,
+   0.1333
+  ],
+  [
+   0.016,
+   0.1333
+  ],
+  [
+   0.018,
+   0.1333
+  ],
+  [
+   0.02,
+   0.1333
+  ],
+  [
+   0.022,
+   0.1333
+  ],
+  [
+   0.024,
+   0.1333
+  ],
+  [
+   0.0261,
+   0.1333
+  ],
+  [
+   0.0281,
+   0.1333
+  ],
+  [
+   0.0301,
+   0.1333
+  ],
+  [
+   0.0321,
+   0.2
+  ],
+  [
+   0.0341,
+   0.2
+  ],
+  [
+   0.0361,
+   0.2
+  ],
+  [
+   0.0381,
+   0.2
+  ],
+  [
+   0.0401,
+   0.2
+  ],
+  [
+   0.0421,
+   0.2
+  ],
+  [
+   0.0441,
+   0.2
+  ],
+  [
+   0.0461,
+   0.2
+  ],
+  [
+   0.0481,
+   0.2
+  ],
+  [
+   0.0501,
+   0.2
+  ],
+  [
+   0.0521,
+   0.2
+  ],
+  [
+   0.0541,
+   0.2
+  ],
+  [
+   0.0561,
+   0.2
+  ],
+  [
+   0.0581,
+   0.2
+  ],
+  [
+   0.0601,
+   0.2
+  ],
+  [
+   0.0621,
+   0.2667
+  ],
+  [
+   0.0641,
+   0.2667
+  ],
+  [
+   0.0661,
+   0.2667
+  ],
+  [
+   0.0681,
+   0.2667
+  ],
+  [
+   0.0701,
+   0.2667
+  ],
+  [
+   0.0721,
+   0.2667
+  ],
+  [
+   0.0741,
+   0.2667
+  ],
+  [
+   0.0762,
+   0.2667
+  ],
+  [
+   0.0782,
+   0.2667
+  ],
+  [
+   0.0802,
+   0.2667
+  ]
+ ],
+ "lesions": [
+  {
+   "id": 12,
+   "diameter_um": 8652.251976054687,
+   "macro": true,
+   "found_at_look": 1
+  },
+  {
+   "id": 2,
+   "diameter_um": 7213.113180785155,
+   "macro": true,
+   "found_at_look": 6
+  },
+  {
+   "id": 7,
+   "diameter_um": 5486.103610218749,
+   "macro": true,
+   "found_at_look": 31
+  },
+  {
+   "id": 1,
+   "diameter_um": 2715.003647876953,
+   "macro": true,
+   "found_at_look": 16
+  },
+  {
+   "id": 8,
+   "diameter_um": 1464.2370637871093,
+   "macro": false,
+   "found_at_look": null
+  },
+  {
+   "id": 13,
+   "diameter_um": 1269.4340192421873,
+   "macro": false,
+   "found_at_look": null
+  },
+  {
+   "id": 15,
+   "diameter_um": 953.5214964179687,
+   "macro": false,
+   "found_at_look": null
+  },
+  {
+   "id": 6,
+   "diameter_um": 937.3281480766601,
+   "macro": false,
+   "found_at_look": null
+  },
+  {
+   "id": 14,
+   "diameter_um": 556.6373059101562,
+   "macro": false,
+   "found_at_look": null
+  },
+  {
+   "id": 3,
+   "diameter_um": 321.2894048225097,
+   "macro": false,
+   "found_at_look": null
+  },
+  {
+   "id": 11,
+   "diameter_um": 237.35732879235837,
+   "macro": false,
+   "found_at_look": null
+  },
+  {
+   "id": 9,
+   "diameter_um": 77.6703134736328,
+   "macro": false,
+   "found_at_look": null
+  },
+  {
+   "id": 10,
+   "diameter_um": 62.232063999999994,
+   "macro": false,
+   "found_at_look": null
+  },
+  {
+   "id": 4,
+   "diameter_um": 15.558015999999999,
+   "macro": false,
+   "found_at_look": null
+  },
+  {
+   "id": 5,
+   "diameter_um": 15.558015999999999,
+   "macro": false,
+   "found_at_look": null
+  }
+ ],
+ "report": {
+  "slide_call": "likely metastasis",
+  "slide_score": 1.0,
+  "looks_used": 40,
+  "coverage": {
+   "cells_viewed": 40,
+   "tissue_cells": 499,
+   "fraction_viewed": 0.0802
+  },
+  "seconds": 36.5
+ }
+}

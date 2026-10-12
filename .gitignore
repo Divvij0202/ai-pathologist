@@ -6,3 +6,4 @@ data/
 *.h5
 models/*.pt
 .venv/
+models/*_features.npz

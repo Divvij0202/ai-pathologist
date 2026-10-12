@@ -1,0 +1,1674 @@
+[
+ {
+  "step": 1,
+  "t": 14.42,
+  "actor": "best_first",
+  "tool": "survey_slide",
+  "args": {},
+  "reason": "start",
+  "result": {
+   "session": "tumor_026_best_first_40",
+   "slide": "tumor_026.tif",
+   "slide_size_mm": [
+    23.6,
+    53.6
+   ],
+   "tissue_cells": 499,
+   "tissue_area_mm2": 278.1,
+   "n_regions": 70,
+   "n_hotspots": 7,
+   "survey_model": "opencv-features-fitted",
+   "regions": [
+    {
+     "region_id": 1,
+     "kind": "hotspot",
+     "n_cells": 8,
+     "cells_viewed": 0,
+     "survey_max": 1.0,
+     "survey_mean": 1.0,
+     "center_xy": [
+      0.192,
+      0.546
+     ],
+     "location": "middle left"
+    },
+    {
+     "region_id": 2,
+     "kind": "hotspot",
+     "n_cells": 6,
+     "cells_viewed": 0,
+     "survey_max": 1.0,
+     "survey_mean": 1.0,
+     "center_xy": [
+      0.173,
+      0.276
+     ],
+     "location": "upper left"
+    },
+    {
+     "region_id": 3,
+     "kind": "hotspot",
+     "n_cells": 11,
+     "cells_viewed": 0,
+     "survey_max": 1.0,
+     "survey_mean": 1.0,
+     "center_xy": [
+      0.651,
+      0.119
+     ],
+     "location": "upper centre"
+    },
+    {
+     "region_id": 4,
+     "kind": "hotspot",
+     "n_cells": 7,
+     "cells_viewed": 0,
+     "survey_max": 1.0,
+     "survey_mean": 1.0,
+     "center_xy": [
+      0.911,
+      0.395
+     ],
+     "location": "middle right"
+    },
+    {
+     "region_id": 5,
+     "kind": "hotspot",
+     "n_cells": 9,
+     "cells_viewed": 0,
+     "survey_max": 1.0,
+     "survey_mean": 1.0,
+     "center_xy": [
+      0.081,
+      0.682
+     ],
+     "location": "lower left"
+    },
+    {
+     "region_id": 6,
+     "kind": "hotspot",
+     "n_cells": 5,
+     "cells_viewed": 0,
+     "survey_max": 1.0,
+     "survey_mean": 1.0,
+     "center_xy": [
+      0.796,
+      0.441
+     ],
+     "location": "middle right"
+    },
+    "... 19 more"
+   ],
+   "overview_image": "/home/claude/runs3/tumor_026_best_first_40/survey.jpg",
+   "seconds": 14.37,
+   "budget": {
+    "max_looks": 40,
+    "max_looks_per_call": 4,
+    "cell_size_mm": 0.75
+   },
+   "regions_not_shown": 45,
+   "looks_left": 40
+  },
+  "looks_used": 0
+ },
+ {
+  "step": 2,
+  "t": 15.58,
+  "actor": "best_first",
+  "tool": "zoom_region",
+  "args": {
+   "region_id": 1,
+   "looks": 1
+  },
+  "reason": "highest remaining survey score 1.00",
+  "result": {
+   "region_id": 1,
+   "looks": [
+    {
+     "n": 1,
+     "cell": [
+      48,
+      8
+     ],
+     "region_id": 1,
+     "max_prob": 1.0,
+     "top3_mean": 1.0,
+     "n_tumour_tiles": 58,
+     "n_tissue_tiles": 64,
+     "blur": 11066.645,
+     "refined": false,
+     "snapshot": "/home/claude/runs3/tumor_026_best_first_40/snapshots/look_001_r48_c8.jpg",
+     "seconds": 1.15
+    }
+   ],
+   "region_cells_viewed": 1,
+   "region_cells_total": 8,
+   "region_max_prob": 1.0,
+   "region_tumour_tiles": 58,
+   "frontier_cells_pending": 3,
+   "looks_left": 39
+  },
+  "looks_used": 1
+ },
+ {
+  "step": 3,
+  "t": 16.07,
+  "actor": "best_first",
+  "tool": "zoom_region",
+  "args": {
+   "region_id": 1,
+   "looks": 1
+  },
+  "reason": "follow tumour across the cell edge",
+  "result": {
+   "region_id": 1,
+   "looks": [
+    {
+     "n": 2,
+     "cell": [
+      49,
+      8
+     ],
+     "region_id": 1,
+     "max_prob": 1.0,
+     "top3_mean": 1.0,
+     "n_tumour_tiles": 64,
+     "n_tissue_tiles": 64,
+     "blur": 10621.986,
+     "refined": false,
+     "snapshot": "/home/claude/runs3/tumor_026_best_first_40/snapshots/look_002_r49_c8.jpg",
+     "seconds": 0.495
+    }
+   ],
+   "region_cells_viewed": 2,
+   "region_cells_total": 8,
+   "region_max_prob": 1.0,
+   "region_tumour_tiles": 122,
+   "frontier_cells_pending": 5,
+   "looks_left": 38
+  },
+  "looks_used": 2
+ },
+ {
+  "step": 4,
+  "t": 16.33,
+  "actor": "best_first",
+  "tool": "zoom_region",
+  "args": {
+   "region_id": 1,
+   "looks": 1
+  },
+  "reason": "follow tumour across the cell edge",
+  "result": {
+   "region_id": 1,
+   "looks": [
+    {
+     "n": 3,
+     "cell": [
+      48,
+      7
+     ],
+     "region_id": 1,
+     "max_prob": 1.0,
+     "top3_mean": 1.0,
+     "n_tumour_tiles": 22,
+     "n_tissue_tiles": 22,
+     "blur": 3512.821,
+     "refined": false,
+     "snapshot": "/home/claude/runs3/tumor_026_best_first_40/snapshots/look_003_r48_c7.jpg",
+     "seconds": 0.253
+    }
+   ],
+   "region_cells_viewed": 3,
+   "region_cells_total": 8,
+   "region_max_prob": 1.0,
+   "region_tumour_tiles": 144,
+   "frontier_cells_pending": 4,
+   "looks_left": 37
+  },
+  "looks_used": 3
+ },
+ {
+  "step": 5,
+  "t": 16.75,
+  "actor": "best_first",
+  "tool": "zoom_region",
+  "args": {
+   "region_id": 1,
+   "looks": 1
+  },
+  "reason": "follow tumour across the cell edge",
+  "result": {
+   "region_id": 1,
+   "looks": [
+    {
+     "n": 4,
+     "cell": [
+      48,
+      9
+     ],
+     "region_id": 1,
+     "max_prob": 1.0,
+     "top3_mean": 0.999,
+     "n_tumour_tiles": 16,
+     "n_tissue_tiles": 55,
+     "blur": 12853.075,
+     "refined": false,
+     "snapshot": "/home/claude/runs3/tumor_026_best_first_40/snapshots/look_004_r48_c9.jpg",
+     "seconds": 0.428
+    }
+   ],
+   "region_cells_viewed": 4,
+   "region_cells_total": 8,
+   "region_max_prob": 1.0,
+   "region_tumour_tiles": 160,
+   "frontier_cells_pending": 3,
+   "looks_left": 36
+  },
+  "looks_used": 4
+ },
+ {
+  "step": 6,
+  "t": 17.35,
+  "actor": "best_first",
+  "tool": "zoom_region",
+  "args": {
+   "region_id": 1,
+   "looks": 1
+  },
+  "reason": "follow tumour across the cell edge",
+  "result": {
+   "region_id": 1,
+   "looks": [
+    {
+     "n": 5,
+     "cell": [
+      50,
+      8
+     ],
+     "region_id": 1,
+     "max_prob": 1.0,
+     "top3_mean": 1.0,
+     "n_tumour_tiles": 63,
+     "n_tissue_tiles": 64,
+     "blur": 11562.883,
+     "refined": false,
+     "snapshot": "/home/claude/runs3/tumor_026_best_first_40/snapshots/look_005_r50_c8.jpg",
+     "seconds": 0.592
+    }
+   ],
+   "region_cells_viewed": 5,
+   "region_cells_total": 8,
+   "region_max_prob": 1.0,
+   "region_tumour_tiles": 223,
+   "frontier_cells_pending": 5,
+   "looks_left": 35
+  },
+  "looks_used": 5
+ },
+ {
+  "step": 7,
+  "t": 18.76,
+  "actor": "best_first",
+  "tool": "zoom_region",
+  "args": {
+   "region_id": 2,
+   "looks": 1
+  },
+  "reason": "highest remaining survey score 1.00",
+  "result": {
+   "region_id": 2,
+   "looks": [
+    {
+     "n": 6,
+     "cell": [
+      38,
+      6
+     ],
+     "region_id": 2,
+     "max_prob": 1.0,
+     "top3_mean": 1.0,
+     "n_tumour_tiles": 64,
+     "n_tissue_tiles": 64,
+     "blur": 9813.023,
+     "refined": false,
+     "snapshot": "/home/claude/runs3/tumor_026_best_first_40/snapshots/look_006_r38_c6.jpg",
+     "seconds": 1.411
+    }
+   ],
+   "region_cells_viewed": 1,
+   "region_cells_total": 6,
+   "region_max_prob": 1.0,
+   "region_tumour_tiles": 64,
+   "frontier_cells_pending": 9,
+   "looks_left": 34
+  },
+  "looks_used": 6
+ },
+ {
+  "step": 8,
+  "t": 19.16,
+  "actor": "best_first",
+  "tool": "zoom_region",
+  "args": {
+   "region_id": 1,
+   "looks": 1
+  },
+  "reason": "follow tumour across the cell edge",
+  "result": {
+   "region_id": 1,
+   "looks": [
+    {
+     "n": 7,
+     "cell": [
+      49,
+      7
+     ],
+     "region_id": 1,
+     "max_prob": 1.0,
+     "top3_mean": 1.0,
+     "n_tumour_tiles": 50,
+     "n_tissue_tiles": 54,
+     "blur": 8972.057,
+     "refined": false,
+     "snapshot": "/home/claude/runs3/tumor_026_best_first_40/snapshots/look_007_r49_c7.jpg",
+     "seconds": 0.394
+    }
+   ],
+   "region_cells_viewed": 6,
+   "region_cells_total": 8,
+   "region_max_prob": 1.0,
+   "region_tumour_tiles": 273,
+   "frontier_cells_pending": 8,
+   "looks_left": 33
+  },
+  "looks_used": 7
+ },
+ {
+  "step": 9,
+  "t": 19.44,
+  "actor": "best_first",
+  "tool": "zoom_region",
+  "args": {
+   "region_id": 1,
+   "looks": 1
+  },
+  "reason": "follow tumour across the cell edge",
+  "result": {
+   "region_id": 1,
+   "looks": [
+    {
+     "n": 8,
+     "cell": [
+      49,
+      9
+     ],
+     "region_id": 1,
+     "max_prob": 1.0,
+     "top3_mean": 1.0,
+     "n_tumour_tiles": 40,
+     "n_tissue_tiles": 50,
+     "blur": 8804.255,
+     "refined": false,
+     "snapshot": "/home/claude/runs3/tumor_026_best_first_40/snapshots/look_008_r49_c9.jpg",
+     "seconds": 0.278
+    }
+   ],
+   "region_cells_viewed": 7,
+   "region_cells_total": 8,
+   "region_max_prob": 1.0,
+   "region_tumour_tiles": 313,
+   "frontier_cells_pending": 7,
+   "looks_left": 32
+  },
+  "looks_used": 8
+ },
+ {
+  "step": 10,
+  "t": 19.92,
+  "actor": "best_first",
+  "tool": "zoom_region",
+  "args": {
+   "region_id": 19,
+   "looks": 1
+  },
+  "reason": "follow tumour across the cell edge",
+  "result": {
+   "region_id": 19,
+   "looks": [
+    {
+     "n": 9,
+     "cell": [
+      51,
+      8
+     ],
+     "region_id": 19,
+     "max_prob": 1.0,
+     "top3_mean": 0.999,
+     "n_tumour_tiles": 61,
+     "n_tissue_tiles": 64,
+     "blur": 12397.067,
+     "refined": false,
+     "snapshot": "/home/claude/runs3/tumor_026_best_first_40/snapshots/look_009_r51_c8.jpg",
+     "seconds": 0.482
+    }
+   ],
+   "region_cells_viewed": 1,
+   "region_cells_total": 5,
+   "region_max_prob": 1.0,
+   "region_tumour_tiles": 61,
+   "frontier_cells_pending": 9,
+   "looks_left": 31
+  },
+  "looks_used": 9
+ },
+ {
+  "step": 11,
+  "t": 20.31,
+  "actor": "best_first",
+  "tool": "zoom_region",
+  "args": {
+   "region_id": 1,
+   "looks": 1
+  },
+  "reason": "follow tumour across the cell edge",
+  "result": {
+   "region_id": 1,
+   "looks": [
+    {
+     "n": 10,
+     "cell": [
+      50,
+      7
+     ],
+     "region_id": 1,
+     "max_prob": 1.0,
+     "top3_mean": 1.0,
+     "n_tumour_tiles": 64,
+     "n_tissue_tiles": 64,
+     "blur": 10653.035,
+     "refined": false,
+     "snapshot": "/home/claude/runs3/tumor_026_best_first_40/snapshots/look_010_r50_c7.jpg",
+     "seconds": 0.387
+    }
+   ],
+   "region_cells_viewed": 8,
+   "region_cells_total": 8,
+   "region_max_prob": 1.0,
+   "region_tumour_tiles": 377,
+   "frontier_cells_pending": 9,
+   "looks_left": 30
+  },
+  "looks_used": 10
+ },
+ {
+  "step": 12,
+  "t": 20.72,
+  "actor": "best_first",
+  "tool": "zoom_region",
+  "args": {
+   "region_id": 2,
+   "looks": 1
+  },
+  "reason": "highest remaining survey score 1.00",
+  "result": {
+   "region_id": 2,
+   "looks": [
+    {
+     "n": 11,
+     "cell": [
+      39,
+      6
+     ],
+     "region_id": 2,
+     "max_prob": 1.0,
+     "top3_mean": 1.0,
+     "n_tumour_tiles": 58,
+     "n_tissue_tiles": 60,
+     "blur": 10458.012,
+     "refined": false,
+     "snapshot": "/home/claude/runs3/tumor_026_best_first_40/snapshots/look_011_r39_c6.jpg",
+     "seconds": 0.412
+    }
+   ],
+   "region_cells_viewed": 2,
+   "region_cells_total": 6,
+   "region_max_prob": 1.0,
+   "region_tumour_tiles": 122,
+   "frontier_cells_pending": 11,
+   "looks_left": 29
+  },
+  "looks_used": 11
+ },
+ {
+  "step": 13,
+  "t": 21.18,
+  "actor": "best_first",
+  "tool": "zoom_region",
+  "args": {
+   "region_id": 19,
+   "looks": 1
+  },
+  "reason": "follow tumour across the cell edge",
+  "result": {
+   "region_id": 19,
+   "looks": [
+    {
+     "n": 12,
+     "cell": [
+      50,
+      9
+     ],
+     "region_id": 19,
+     "max_prob": 1.0,
+     "top3_mean": 0.999,
+     "n_tumour_tiles": 28,
+     "n_tissue_tiles": 42,
+     "blur": 7211.784,
+     "refined": false,
+     "snapshot": "/home/claude/runs3/tumor_026_best_first_40/snapshots/look_012_r50_c9.jpg",
+     "seconds": 0.456
+    }
+   ],
+   "region_cells_viewed": 2,
+   "region_cells_total": 5,
+   "region_max_prob": 1.0,
+   "region_tumour_tiles": 89,
+   "frontier_cells_pending": 10,
+   "looks_left": 28
+  },
+  "looks_used": 12
+ },
+ {
+  "step": 14,
+  "t": 21.52,
+  "actor": "best_first",
+  "tool": "zoom_region",
+  "args": {
+   "region_id": 10,
+   "looks": 1
+  },
+  "reason": "follow tumour across the cell edge",
+  "result": {
+   "region_id": 10,
+   "looks": [
+    {
+     "n": 13,
+     "cell": [
+      37,
+      6
+     ],
+     "region_id": 10,
+     "max_prob": 1.0,
+     "top3_mean": 0.998,
+     "n_tumour_tiles": 22,
+     "n_tissue_tiles": 61,
+     "blur": 16056.465,
+     "refined": false,
+     "snapshot": "/home/claude/runs3/tumor_026_best_first_40/snapshots/look_013_r37_c6.jpg",
+     "seconds": 0.336
+    }
+   ],
+   "region_cells_viewed": 1,
+   "region_cells_total": 10,
+   "region_max_prob": 1.0,
+   "region_tumour_tiles": 22,
+   "frontier_cells_pending": 10,
+   "looks_left": 27
+  },
+  "looks_used": 13
+ },
+ {
+  "step": 15,
+  "t": 22.14,
+  "actor": "best_first",
+  "tool": "zoom_region",
+  "args": {
+   "region_id": 10,
+   "looks": 1
+  },
+  "reason": "follow tumour across the cell edge",
+  "result": {
+   "region_id": 10,
+   "looks": [
+    {
+     "n": 14,
+     "cell": [
+      38,
+      5
+     ],
+     "region_id": 10,
+     "max_prob": 1.0,
+     "top3_mean": 1.0,
+     "n_tumour_tiles": 36,
+     "n_tissue_tiles": 55,
+     "blur": 11586.08,
+     "refined": false,
+     "snapshot": "/home/claude/runs3/tumor_026_best_first_40/snapshots/look_014_r38_c5.jpg",
+     "seconds": 0.623
+    }
+   ],
+   "region_cells_viewed": 2,
+   "region_cells_total": 10,
+   "region_max_prob": 1.0,
+   "region_tumour_tiles": 58,
+   "frontier_cells_pending": 10,
+   "looks_left": 26
+  },
+  "looks_used": 14
+ },
+ {
+  "step": 16,
+  "t": 22.69,
+  "actor": "best_first",
+  "tool": "zoom_region",
+  "args": {
+   "region_id": 2,
+   "looks": 1
+  },
+  "reason": "follow tumour across the cell edge",
+  "result": {
+   "region_id": 2,
+   "looks": [
+    {
+     "n": 15,
+     "cell": [
+      38,
+      7
+     ],
+     "region_id": 2,
+     "max_prob": 0.999,
+     "top3_mean": 0.999,
+     "n_tumour_tiles": 64,
+     "n_tissue_tiles": 64,
+     "blur": 11471.202,
+     "refined": false,
+     "snapshot": "/home/claude/runs3/tumor_026_best_first_40/snapshots/look_015_r38_c7.jpg",
+     "seconds": 0.549
+    }
+   ],
+   "region_cells_viewed": 3,
+   "region_cells_total": 6,
+   "region_max_prob": 1.0,
+   "region_tumour_tiles": 186,
+   "frontier_cells_pending": 10,
+   "looks_left": 25
+  },
+  "looks_used": 15
+ },
+ {
+  "step": 17,
+  "t": 23.68,
+  "actor": "best_first",
+  "tool": "zoom_region",
+  "args": {
+   "region_id": 3,
+   "looks": 1
+  },
+  "reason": "highest remaining survey score 1.00",
+  "result": {
+   "region_id": 3,
+   "looks": [
+    {
+     "n": 16,
+     "cell": [
+      30,
+      21
+     ],
+     "region_id": 3,
+     "max_prob": 1.0,
+     "top3_mean": 1.0,
+     "n_tumour_tiles": 64,
+     "n_tissue_tiles": 64,
+     "blur": 10700.793,
+     "refined": false,
+     "snapshot": "/home/claude/runs3/tumor_026_best_first_40/snapshots/look_016_r30_c21.jpg",
+     "seconds": 0.984
+    }
+   ],
+   "region_cells_viewed": 1,
+   "region_cells_total": 11,
+   "region_max_prob": 1.0,
+   "region_tumour_tiles": 64,
+   "frontier_cells_pending": 14,
+   "looks_left": 24
+  },
+  "looks_used": 16
+ },
+ {
+  "step": 18,
+  "t": 24.18,
+  "actor": "best_first",
+  "tool": "zoom_region",
+  "args": {
+   "region_id": 21,
+   "looks": 1
+  },
+  "reason": "follow tumour across the cell edge",
+  "result": {
+   "region_id": 21,
+   "looks": [
+    {
+     "n": 17,
+     "cell": [
+      52,
+      8
+     ],
+     "region_id": 21,
+     "max_prob": 0.999,
+     "top3_mean": 0.998,
+     "n_tumour_tiles": 55,
+     "n_tissue_tiles": 61,
+     "blur": 11824.618,
+     "refined": false,
+     "snapshot": "/home/claude/runs3/tumor_026_best_first_40/snapshots/look_017_r52_c8.jpg",
+     "seconds": 0.504
+    }
+   ],
+   "region_cells_viewed": 1,
+   "region_cells_total": 2,
+   "region_max_prob": 0.999,
+   "region_tumour_tiles": 55,
+   "frontier_cells_pending": 15,
+   "looks_left": 23
+  },
+  "looks_used": 17
+ },
+ {
+  "step": 19,
+  "t": 24.49,
+  "actor": "best_first",
+  "tool": "zoom_region",
+  "args": {
+   "region_id": 13,
+   "looks": 1
+  },
+  "reason": "follow tumour across the cell edge",
+  "result": {
+   "region_id": 13,
+   "looks": [
+    {
+     "n": 18,
+     "cell": [
+      51,
+      7
+     ],
+     "region_id": 13,
+     "max_prob": 0.999,
+     "top3_mean": 0.999,
+     "n_tumour_tiles": 63,
+     "n_tissue_tiles": 64,
+     "blur": 11708.653,
+     "refined": false,
+     "snapshot": "/home/claude/runs3/tumor_026_best_first_40/snapshots/look_018_r51_c7.jpg",
+     "seconds": 0.308
+    }
+   ],
+   "region_cells_viewed": 1,
+   "region_cells_total": 3,
+   "region_max_prob": 0.999,
+   "region_tumour_tiles": 63,
+   "frontier_cells_pending": 15,
+   "looks_left": 22
+  },
+  "looks_used": 18
+ },
+ {
+  "step": 20,
+  "t": 24.64,
+  "actor": "best_first",
+  "tool": "zoom_region",
+  "args": {
+   "region_id": 19,
+   "looks": 1
+  },
+  "reason": "follow tumour across the cell edge",
+  "result": {
+   "region_id": 19,
+   "looks": [
+    {
+     "n": 19,
+     "cell": [
+      51,
+      9
+     ],
+     "region_id": 19,
+     "max_prob": 0.958,
+     "top3_mean": 0.927,
+     "n_tumour_tiles": 6,
+     "n_tissue_tiles": 22,
+     "blur": 5081.311,
+     "refined": false,
+     "snapshot": "/home/claude/runs3/tumor_026_best_first_40/snapshots/look_019_r51_c9.jpg",
+     "seconds": 0.143
+    }
+   ],
+   "region_cells_viewed": 3,
+   "region_cells_total": 5,
+   "region_max_prob": 1.0,
+   "region_tumour_tiles": 95,
+   "frontier_cells_pending": 14,
+   "looks_left": 21
+  },
+  "looks_used": 19
+ },
+ {
+  "step": 21,
+  "t": 25.12,
+  "actor": "best_first",
+  "tool": "zoom_region",
+  "args": {
+   "region_id": 13,
+   "looks": 1
+  },
+  "reason": "follow tumour across the cell edge",
+  "result": {
+   "region_id": 13,
+   "looks": [
+    {
+     "n": 20,
+     "cell": [
+      50,
+      6
+     ],
+     "region_id": 13,
+     "max_prob": 1.0,
+     "top3_mean": 0.998,
+     "n_tumour_tiles": 10,
+     "n_tissue_tiles": 16,
+     "blur": 4588.409,
+     "refined": false,
+     "snapshot": "/home/claude/runs3/tumor_026_best_first_40/snapshots/look_020_r50_c6.jpg",
+     "seconds": 0.481
+    }
+   ],
+   "region_cells_viewed": 2,
+   "region_cells_total": 3,
+   "region_max_prob": 1.0,
+   "region_tumour_tiles": 73,
+   "frontier_cells_pending": 13,
+   "looks_left": 20
+  },
+  "looks_used": 20
+ },
+ {
+  "step": 22,
+  "t": 26.04,
+  "actor": "best_first",
+  "tool": "zoom_region",
+  "args": {
+   "region_id": 3,
+   "looks": 1
+  },
+  "reason": "highest remaining survey score 1.00",
+  "result": {
+   "region_id": 3,
+   "looks": [
+    {
+     "n": 21,
+     "cell": [
+      31,
+      20
+     ],
+     "region_id": 3,
+     "max_prob": 1.0,
+     "top3_mean": 1.0,
+     "n_tumour_tiles": 62,
+     "n_tissue_tiles": 64,
+     "blur": 12144.162,
+     "refined": false,
+     "snapshot": "/home/claude/runs3/tumor_026_best_first_40/snapshots/look_021_r31_c20.jpg",
+     "seconds": 0.91
+    }
+   ],
+   "region_cells_viewed": 2,
+   "region_cells_total": 11,
+   "region_max_prob": 1.0,
+   "region_tumour_tiles": 126,
+   "frontier_cells_pending": 15,
+   "looks_left": 19
+  },
+  "looks_used": 21
+ },
+ {
+  "step": 23,
+  "t": 26.39,
+  "actor": "best_first",
+  "tool": "zoom_region",
+  "args": {
+   "region_id": 20,
+   "looks": 1
+  },
+  "reason": "follow tumour across the cell edge",
+  "result": {
+   "region_id": 20,
+   "looks": [
+    {
+     "n": 22,
+     "cell": [
+      40,
+      6
+     ],
+     "region_id": 20,
+     "max_prob": 1.0,
+     "top3_mean": 0.999,
+     "n_tumour_tiles": 5,
+     "n_tissue_tiles": 38,
+     "blur": 8726.687,
+     "refined": false,
+     "snapshot": "/home/claude/runs3/tumor_026_best_first_40/snapshots/look_022_r40_c6.jpg",
+     "seconds": 0.353
+    }
+   ],
+   "region_cells_viewed": 1,
+   "region_cells_total": 2,
+   "region_max_prob": 1.0,
+   "region_tumour_tiles": 5,
+   "frontier_cells_pending": 15,
+   "looks_left": 18
+  },
+  "looks_used": 22
+ },
+ {
+  "step": 24,
+  "t": 26.66,
+  "actor": "best_first",
+  "tool": "zoom_region",
+  "args": {
+   "region_id": 10,
+   "looks": 1
+  },
+  "reason": "follow tumour across the cell edge",
+  "result": {
+   "region_id": 10,
+   "looks": [
+    {
+     "n": 23,
+     "cell": [
+      39,
+      5
+     ],
+     "region_id": 10,
+     "max_prob": 1.0,
+     "top3_mean": 1.0,
+     "n_tumour_tiles": 14,
+     "n_tissue_tiles": 20,
+     "blur": 4190.317,
+     "refined": false,
+     "snapshot": "/home/claude/runs3/tumor_026_best_first_40/snapshots/look_023_r39_c5.jpg",
+     "seconds": 0.268
+    }
+   ],
+   "region_cells_viewed": 3,
+   "region_cells_total": 10,
+   "region_max_prob": 1.0,
+   "region_tumour_tiles": 72,
+   "frontier_cells_pending": 14,
+   "looks_left": 17
+  },
+  "looks_used": 23
+ },
+ {
+  "step": 25,
+  "t": 26.99,
+  "actor": "best_first",
+  "tool": "zoom_region",
+  "args": {
+   "region_id": 10,
+   "looks": 1
+  },
+  "reason": "follow tumour across the cell edge",
+  "result": {
+   "region_id": 10,
+   "looks": [
+    {
+     "n": 24,
+     "cell": [
+      39,
+      7
+     ],
+     "region_id": 10,
+     "max_prob": 0.999,
+     "top3_mean": 0.999,
+     "n_tumour_tiles": 64,
+     "n_tissue_tiles": 64,
+     "blur": 12531.417,
+     "refined": false,
+     "snapshot": "/home/claude/runs3/tumor_026_best_first_40/snapshots/look_024_r39_c7.jpg",
+     "seconds": 0.329
+    }
+   ],
+   "region_cells_viewed": 4,
+   "region_cells_total": 10,
+   "region_max_prob": 1.0,
+   "region_tumour_tiles": 136,
+   "frontier_cells_pending": 14,
+   "looks_left": 16
+  },
+  "looks_used": 24
+ },
+ {
+  "step": 26,
+  "t": 27.44,
+  "actor": "best_first",
+  "tool": "zoom_region",
+  "args": {
+   "region_id": 10,
+   "looks": 1
+  },
+  "reason": "follow tumour across the cell edge",
+  "result": {
+   "region_id": 10,
+   "looks": [
+    {
+     "n": 25,
+     "cell": [
+      37,
+      7
+     ],
+     "region_id": 10,
+     "max_prob": 0.999,
+     "top3_mean": 0.999,
+     "n_tumour_tiles": 37,
+     "n_tissue_tiles": 53,
+     "blur": 8903.015,
+     "refined": false,
+     "snapshot": "/home/claude/runs3/tumor_026_best_first_40/snapshots/look_025_r37_c7.jpg",
+     "seconds": 0.455
+    }
+   ],
+   "region_cells_viewed": 5,
+   "region_cells_total": 10,
+   "region_max_prob": 1.0,
+   "region_tumour_tiles": 173,
+   "frontier_cells_pending": 14,
+   "looks_left": 15
+  },
+  "looks_used": 25
+ },
+ {
+  "step": 27,
+  "t": 28.61,
+  "actor": "best_first",
+  "tool": "zoom_region",
+  "args": {
+   "region_id": 3,
+   "looks": 1
+  },
+  "reason": "highest remaining survey score 1.00",
+  "result": {
+   "region_id": 3,
+   "looks": [
+    {
+     "n": 26,
+     "cell": [
+      30,
+      22
+     ],
+     "region_id": 3,
+     "max_prob": 1.0,
+     "top3_mean": 0.999,
+     "n_tumour_tiles": 42,
+     "n_tissue_tiles": 64,
+     "blur": 16062.909,
+     "refined": false,
+     "snapshot": "/home/claude/runs3/tumor_026_best_first_40/snapshots/look_026_r30_c22.jpg",
+     "seconds": 1.162
+    }
+   ],
+   "region_cells_viewed": 3,
+   "region_cells_total": 11,
+   "region_max_prob": 1.0,
+   "region_tumour_tiles": 168,
+   "frontier_cells_pending": 15,
+   "looks_left": 14
+  },
+  "looks_used": 26
+ },
+ {
+  "step": 28,
+  "t": 29.11,
+  "actor": "best_first",
+  "tool": "zoom_region",
+  "args": {
+   "region_id": 10,
+   "looks": 1
+  },
+  "reason": "follow tumour across the cell edge",
+  "result": {
+   "region_id": 10,
+   "looks": [
+    {
+     "n": 27,
+     "cell": [
+      37,
+      5
+     ],
+     "region_id": 10,
+     "max_prob": 0.754,
+     "top3_mean": 0.634,
+     "n_tumour_tiles": 3,
+     "n_tissue_tiles": 64,
+     "blur": 18120.491,
+     "refined": false,
+     "snapshot": "/home/claude/runs3/tumor_026_best_first_40/snapshots/look_027_r37_c5.jpg",
+     "seconds": 0.496
+    }
+   ],
+   "region_cells_viewed": 6,
+   "region_cells_total": 10,
+   "region_max_prob": 1.0,
+   "region_tumour_tiles": 176,
+   "frontier_cells_pending": 14,
+   "looks_left": 13
+  },
+  "looks_used": 27
+ },
+ {
+  "step": 29,
+  "t": 29.73,
+  "actor": "best_first",
+  "tool": "zoom_region",
+  "args": {
+   "region_id": 2,
+   "looks": 1
+  },
+  "reason": "follow tumour across the cell edge",
+  "result": {
+   "region_id": 2,
+   "looks": [
+    {
+     "n": 28,
+     "cell": [
+      38,
+      8
+     ],
+     "region_id": 2,
+     "max_prob": 1.0,
+     "top3_mean": 1.0,
+     "n_tumour_tiles": 64,
+     "n_tissue_tiles": 64,
+     "blur": 11846.174,
+     "refined": false,
+     "snapshot": "/home/claude/runs3/tumor_026_best_first_40/snapshots/look_028_r38_c8.jpg",
+     "seconds": 0.62
+    }
+   ],
+   "region_cells_viewed": 4,
+   "region_cells_total": 6,
+   "region_max_prob": 1.0,
+   "region_tumour_tiles": 250,
+   "frontier_cells_pending": 14,
+   "looks_left": 12
+  },
+  "looks_used": 28
+ },
+ {
+  "step": 30,
+  "t": 30.05,
+  "actor": "best_first",
+  "tool": "zoom_region",
+  "args": {
+   "region_id": 11,
+   "looks": 1
+  },
+  "reason": "follow tumour across the cell edge",
+  "result": {
+   "region_id": 11,
+   "looks": [
+    {
+     "n": 29,
+     "cell": [
+      29,
+      21
+     ],
+     "region_id": 11,
+     "max_prob": 0.934,
+     "top3_mean": 0.81,
+     "n_tumour_tiles": 5,
+     "n_tissue_tiles": 47,
+     "blur": 15295.875,
+     "refined": false,
+     "snapshot": "/home/claude/runs3/tumor_026_best_first_40/snapshots/look_029_r29_c21.jpg",
+     "seconds": 0.317
+    }
+   ],
+   "region_cells_viewed": 1,
+   "region_cells_total": 6,
+   "region_max_prob": 0.934,
+   "region_tumour_tiles": 5,
+   "frontier_cells_pending": 13,
+   "looks_left": 11
+  },
+  "looks_used": 29
+ },
+ {
+  "step": 31,
+  "t": 30.36,
+  "actor": "best_first",
+  "tool": "zoom_region",
+  "args": {
+   "region_id": 11,
+   "looks": 1
+  },
+  "reason": "follow tumour across the cell edge",
+  "result": {
+   "region_id": 11,
+   "looks": [
+    {
+     "n": 30,
+     "cell": [
+      31,
+      21
+     ],
+     "region_id": 11,
+     "max_prob": 1.0,
+     "top3_mean": 0.999,
+     "n_tumour_tiles": 64,
+     "n_tissue_tiles": 64,
+     "blur": 11016.834,
+     "refined": false,
+     "snapshot": "/home/claude/runs3/tumor_026_best_first_40/snapshots/look_030_r31_c21.jpg",
+     "seconds": 0.317
+    }
+   ],
+   "region_cells_viewed": 2,
+   "region_cells_total": 6,
+   "region_max_prob": 1.0,
+   "region_tumour_tiles": 69,
+   "frontier_cells_pending": 13,
+   "looks_left": 10
+  },
+  "looks_used": 30
+ },
+ {
+  "step": 32,
+  "t": 30.93,
+  "actor": "best_first",
+  "tool": "zoom_region",
+  "args": {
+   "region_id": 4,
+   "looks": 1
+  },
+  "reason": "highest remaining survey score 1.00",
+  "result": {
+   "region_id": 4,
+   "looks": [
+    {
+     "n": 31,
+     "cell": [
+      43,
+      29
+     ],
+     "region_id": 4,
+     "max_prob": 1.0,
+     "top3_mean": 1.0,
+     "n_tumour_tiles": 21,
+     "n_tissue_tiles": 29,
+     "blur": 5536.832,
+     "refined": false,
+     "snapshot": "/home/claude/runs3/tumor_026_best_first_40/snapshots/look_031_r43_c29.jpg",
+     "seconds": 0.565
+    }
+   ],
+   "region_cells_viewed": 1,
+   "region_cells_total": 7,
+   "region_max_prob": 1.0,
+   "region_tumour_tiles": 21,
+   "frontier_cells_pending": 15,
+   "looks_left": 9
+  },
+  "looks_used": 31
+ },
+ {
+  "step": 33,
+  "t": 31.58,
+  "actor": "best_first",
+  "tool": "zoom_region",
+  "args": {
+   "region_id": 3,
+   "looks": 1
+  },
+  "reason": "follow tumour across the cell edge",
+  "result": {
+   "region_id": 3,
+   "looks": [
+    {
+     "n": 32,
+     "cell": [
+      30,
+      20
+     ],
+     "region_id": 3,
+     "max_prob": 1.0,
+     "top3_mean": 1.0,
+     "n_tumour_tiles": 40,
+     "n_tissue_tiles": 62,
+     "blur": 14144.883,
+     "refined": false,
+     "snapshot": "/home/claude/runs3/tumor_026_best_first_40/snapshots/look_032_r30_c20.jpg",
+     "seconds": 0.647
+    }
+   ],
+   "region_cells_viewed": 4,
+   "region_cells_total": 11,
+   "region_max_prob": 1.0,
+   "region_tumour_tiles": 208,
+   "frontier_cells_pending": 14,
+   "looks_left": 8
+  },
+  "looks_used": 32
+ },
+ {
+  "step": 34,
+  "t": 32.15,
+  "actor": "best_first",
+  "tool": "zoom_region",
+  "args": {
+   "region_id": 21,
+   "looks": 1
+  },
+  "reason": "follow tumour across the cell edge",
+  "result": {
+   "region_id": 21,
+   "looks": [
+    {
+     "n": 33,
+     "cell": [
+      53,
+      8
+     ],
+     "region_id": 21,
+     "max_prob": 0.975,
+     "top3_mean": 0.914,
+     "n_tumour_tiles": 11,
+     "n_tissue_tiles": 23,
+     "blur": 4864.65,
+     "refined": false,
+     "snapshot": "/home/claude/runs3/tumor_026_best_first_40/snapshots/look_033_r53_c8.jpg",
+     "seconds": 0.565
+    }
+   ],
+   "region_cells_viewed": 2,
+   "region_cells_total": 2,
+   "region_max_prob": 0.999,
+   "region_tumour_tiles": 66,
+   "frontier_cells_pending": 14,
+   "looks_left": 7
+  },
+  "looks_used": 33
+ },
+ {
+  "step": 35,
+  "t": 32.69,
+  "actor": "best_first",
+  "tool": "zoom_region",
+  "args": {
+   "region_id": 5,
+   "looks": 1
+  },
+  "reason": "follow tumour across the cell edge",
+  "result": {
+   "region_id": 5,
+   "looks": [
+    {
+     "n": 34,
+     "cell": [
+      52,
+      7
+     ],
+     "region_id": 5,
+     "max_prob": 0.999,
+     "top3_mean": 0.998,
+     "n_tumour_tiles": 64,
+     "n_tissue_tiles": 64,
+     "blur": 11301.376,
+     "refined": false,
+     "snapshot": "/home/claude/runs3/tumor_026_best_first_40/snapshots/look_034_r52_c7.jpg",
+     "seconds": 0.544
+    }
+   ],
+   "region_cells_viewed": 1,
+   "region_cells_total": 9,
+   "region_max_prob": 0.999,
+   "region_tumour_tiles": 64,
+   "frontier_cells_pending": 14,
+   "looks_left": 6
+  },
+  "looks_used": 34
+ },
+ {
+  "step": 36,
+  "t": 33.29,
+  "actor": "best_first",
+  "tool": "zoom_region",
+  "args": {
+   "region_id": 13,
+   "looks": 1
+  },
+  "reason": "follow tumour across the cell edge",
+  "result": {
+   "region_id": 13,
+   "looks": [
+    {
+     "n": 35,
+     "cell": [
+      51,
+      6
+     ],
+     "region_id": 13,
+     "max_prob": 0.998,
+     "top3_mean": 0.998,
+     "n_tumour_tiles": 21,
+     "n_tissue_tiles": 45,
+     "blur": 10343.558,
+     "refined": false,
+     "snapshot": "/home/claude/runs3/tumor_026_best_first_40/snapshots/look_035_r51_c6.jpg",
+     "seconds": 0.595
+    }
+   ],
+   "region_cells_viewed": 3,
+   "region_cells_total": 3,
+   "region_max_prob": 1.0,
+   "region_tumour_tiles": 94,
+   "frontier_cells_pending": 13,
+   "looks_left": 5
+  },
+  "looks_used": 35
+ },
+ {
+  "step": 37,
+  "t": 33.94,
+  "actor": "best_first",
+  "tool": "zoom_region",
+  "args": {
+   "region_id": 3,
+   "looks": 1
+  },
+  "reason": "highest remaining survey score 1.00",
+  "result": {
+   "region_id": 3,
+   "looks": [
+    {
+     "n": 36,
+     "cell": [
+      32,
+      20
+     ],
+     "region_id": 3,
+     "max_prob": 1.0,
+     "top3_mean": 1.0,
+     "n_tumour_tiles": 63,
+     "n_tissue_tiles": 64,
+     "blur": 12619.531,
+     "refined": false,
+     "snapshot": "/home/claude/runs3/tumor_026_best_first_40/snapshots/look_036_r32_c20.jpg",
+     "seconds": 0.649
+    }
+   ],
+   "region_cells_viewed": 5,
+   "region_cells_total": 11,
+   "region_max_prob": 1.0,
+   "region_tumour_tiles": 271,
+   "frontier_cells_pending": 14,
+   "looks_left": 4
+  },
+  "looks_used": 36
+ },
+ {
+  "step": 38,
+  "t": 34.3,
+  "actor": "best_first",
+  "tool": "zoom_region",
+  "args": {
+   "region_id": 3,
+   "looks": 1
+  },
+  "reason": "follow tumour across the cell edge",
+  "result": {
+   "region_id": 3,
+   "looks": [
+    {
+     "n": 37,
+     "cell": [
+      31,
+      19
+     ],
+     "region_id": 3,
+     "max_prob": 1.0,
+     "top3_mean": 1.0,
+     "n_tumour_tiles": 19,
+     "n_tissue_tiles": 38,
+     "blur": 10256.137,
+     "refined": false,
+     "snapshot": "/home/claude/runs3/tumor_026_best_first_40/snapshots/look_037_r31_c19.jpg",
+     "seconds": 0.357
+    }
+   ],
+   "region_cells_viewed": 6,
+   "region_cells_total": 11,
+   "region_max_prob": 1.0,
+   "region_tumour_tiles": 290,
+   "frontier_cells_pending": 13,
+   "looks_left": 3
+  },
+  "looks_used": 37
+ },
+ {
+  "step": 39,
+  "t": 34.88,
+  "actor": "best_first",
+  "tool": "zoom_region",
+  "args": {
+   "region_id": 20,
+   "looks": 1
+  },
+  "reason": "follow tumour across the cell edge",
+  "result": {
+   "region_id": 20,
+   "looks": [
+    {
+     "n": 38,
+     "cell": [
+      40,
+      7
+     ],
+     "region_id": 20,
+     "max_prob": 1.0,
+     "top3_mean": 1.0,
+     "n_tumour_tiles": 36,
+     "n_tissue_tiles": 48,
+     "blur": 11454.755,
+     "refined": false,
+     "snapshot": "/home/claude/runs3/tumor_026_best_first_40/snapshots/look_038_r40_c7.jpg",
+     "seconds": 0.585
+    }
+   ],
+   "region_cells_viewed": 2,
+   "region_cells_total": 2,
+   "region_max_prob": 1.0,
+   "region_tumour_tiles": 41,
+   "frontier_cells_pending": 13,
+   "looks_left": 2
+  },
+  "looks_used": 38
+ },
+ {
+  "step": 40,
+  "t": 35.65,
+  "actor": "best_first",
+  "tool": "zoom_region",
+  "args": {
+   "region_id": 15,
+   "looks": 1
+  },
+  "reason": "follow tumour across the cell edge",
+  "result": {
+   "region_id": 15,
+   "looks": [
+    {
+     "n": 39,
+     "cell": [
+      39,
+      8
+     ],
+     "region_id": 15,
+     "max_prob": 1.0,
+     "top3_mean": 0.999,
+     "n_tumour_tiles": 64,
+     "n_tissue_tiles": 64,
+     "blur": 12655.586,
+     "refined": false,
+     "snapshot": "/home/claude/runs3/tumor_026_best_first_40/snapshots/look_039_r39_c8.jpg",
+     "seconds": 0.769
+    }
+   ],
+   "region_cells_viewed": 1,
+   "region_cells_total": 5,
+   "region_max_prob": 1.0,
+   "region_tumour_tiles": 64,
+   "frontier_cells_pending": 13,
+   "looks_left": 1
+  },
+  "looks_used": 39
+ },
+ {
+  "step": 41,
+  "t": 36.34,
+  "actor": "best_first",
+  "tool": "zoom_region",
+  "args": {
+   "region_id": 2,
+   "looks": 1
+  },
+  "reason": "follow tumour across the cell edge",
+  "result": {
+   "region_id": 2,
+   "looks": [
+    {
+     "n": 40,
+     "cell": [
+      37,
+      8
+     ],
+     "region_id": 2,
+     "max_prob": 1.0,
+     "top3_mean": 0.999,
+     "n_tumour_tiles": 47,
+     "n_tissue_tiles": 61,
+     "blur": 9019.124,
+     "refined": false,
+     "snapshot": "/home/claude/runs3/tumor_026_best_first_40/snapshots/look_040_r37_c8.jpg",
+     "seconds": 0.686
+    }
+   ],
+   "region_cells_viewed": 5,
+   "region_cells_total": 6,
+   "region_max_prob": 1.0,
+   "region_tumour_tiles": 297,
+   "frontier_cells_pending": 13,
+   "looks_left": 0
+  },
+  "looks_used": 40
+ }
+]
