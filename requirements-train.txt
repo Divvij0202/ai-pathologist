@@ -1,0 +1,6 @@
+# training only (your GPU machine); install PyTorch for your CUDA version first: https://pytorch.org
+-r requirements.txt
+torch>=2.5
+torchvision>=0.20
+h5py>=3.11
+onnx>=1.17
