@@ -13,9 +13,11 @@ import numpy as np
 from .session import SearchSession
 
 
-def best_first(s: SearchSession, stop_early: bool = False, max_follow: int = 4) -> dict:
+def best_first(s: SearchSession, stop_early: bool = False, max_follow: int = 4, suppress: int = 2) -> dict:
     """max_follow caps how many looks are spent tracing one lesion's edges before
-    moving to the next seed, so one big lesion can't eat the whole budget."""
+    moving to the next seed, so one big lesion can't eat the whole budget.
+    suppress: seeds within this many cells of tumour already found rank last
+    (non-maximum suppression), so the search moves on to new places."""
     if not s.surveyed:
         s.call("survey_slide", reason="start", actor="best_first")
     st = s.vision.states[s.session_id]
@@ -30,7 +32,12 @@ def best_first(s: SearchSession, stop_early: bool = False, max_follow: int = 4) 
             cand = [c for c in st.cell_region if c not in st.visited]
             if not cand:
                 break
-            cell = max(cand, key=lambda c: np.nan_to_num(st.survey[c], nan=-1))
+            hot = [l.cell for l in st.looks if l.n_tumour_tiles >= 2]
+
+            def rank(c):
+                near = suppress and any(abs(c[0] - h[0]) <= suppress and abs(c[1] - h[1]) <= suppress for h in hot)
+                return (not near, float(np.nan_to_num(st.survey[c], nan=-1)))
+            cell = max(cand, key=rank)
             follow = 0
             st.frontier = [c for c in st.frontier if c != cell]
             why = f"highest remaining survey score {st.survey[cell]:.2f}"
