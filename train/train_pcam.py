@@ -169,7 +169,7 @@ def predict_logits(model, aug, loader, device):
     zs, ys = [], []
     for x, y in loader:
         x = aug(x.to(device, non_blocking=True), train=False)
-        with torch.autocast(device.type, enabled=device.type == "cuda"):
+        with torch.autocast(device.type, enabled=device.type in ("cuda", "xpu")):
             zs.append(model(x).float().view(-1).cpu())
         ys.append(y.view(-1))
     return torch.cat(zs).numpy(), torch.cat(ys).numpy()
@@ -263,7 +263,13 @@ def main():
     ap.add_argument("--out", default="models/tile_classifier.onnx")
     args = ap.parse_args()
 
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    # NVIDIA (cuda), Intel Arc (xpu, PyTorch >= 2.5 built for XPU), else CPU
+    if torch.cuda.is_available():
+        device = torch.device("cuda")
+    elif hasattr(torch, "xpu") and torch.xpu.is_available():
+        device = torch.device("xpu")
+    else:
+        device = torch.device("cpu")
     print("device", device)
     train_ds, val_ds, test_ds = load_data(args)
     print("patches  train", len(train_ds), " val", len(val_ds), " test", len(test_ds))
@@ -278,7 +284,7 @@ def main():
     opt = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=1e-4)
     steps = args.epochs * len(train_dl)
     sched = torch.optim.lr_scheduler.OneCycleLR(opt, max_lr=args.lr, total_steps=steps, pct_start=0.1)
-    scaler = torch.amp.GradScaler(enabled=device.type == "cuda")
+    scaler = torch.amp.GradScaler(device.type if device.type != "cpu" else "cuda", enabled=device.type in ("cuda", "xpu"))
     best, best_state = -1, None
     for ep in range(args.epochs):
         model.train()
@@ -286,7 +292,7 @@ def main():
         for i, (x, y) in enumerate(train_dl):
             x = aug(x.to(device, non_blocking=True), train=True).contiguous(memory_format=torch.channels_last)
             y = y.to(device).float().view(-1, 1)
-            with torch.autocast(device.type, enabled=device.type == "cuda"):
+            with torch.autocast(device.type, enabled=device.type in ("cuda", "xpu")):
                 loss = F.binary_cross_entropy_with_logits(model(x).float(), y)
             opt.zero_grad(set_to_none=True)
             scaler.scale(loss).backward()

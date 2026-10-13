@@ -1,4 +1,4 @@
-# training only (your GPU machine); install PyTorch for your CUDA version first: https://pytorch.org
+# training only (your GPU machine). Install PyTorch first: NVIDIA -> https://pytorch.org ; Intel Arc -> pip install torch torchvision --index-url https://download.pytorch.org/whl/xpu
 -r requirements.txt
 torch>=2.5
 torchvision>=0.20
